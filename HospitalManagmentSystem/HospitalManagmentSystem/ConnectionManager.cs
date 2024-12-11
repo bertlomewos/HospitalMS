@@ -13,6 +13,7 @@ namespace HospitalManagmentSystem
         public readonly MySqlConnection mySql;
         public ConnectionManager()
         {
+            //robel was here
             mySql = new MySqlConnection(mysqlconn);
         }
     }

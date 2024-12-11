@@ -16,5 +16,7 @@ namespace HospitalManagmentSystem
             //robel was here
             mySql = new MySqlConnection(mysqlconn);
         }
+        //Roba bitches
+        //Nigger
     }
 }

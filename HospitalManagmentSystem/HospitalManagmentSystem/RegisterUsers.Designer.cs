@@ -41,7 +41,6 @@
             birthDate = new DateTimePicker();
             btn_register = new Button();
             btn_clearRigster = new Button();
-            btn_editRegister = new Button();
             label1 = new Label();
             txt_firstName = new TextBox();
             comboBox1 = new ComboBox();
@@ -137,6 +136,7 @@
             // 
             cmb_gender.DropDownStyle = ComboBoxStyle.DropDownList;
             cmb_gender.FormattingEnabled = true;
+            cmb_gender.Items.AddRange(new object[] { "Male", "Female" });
             cmb_gender.Location = new Point(203, 178);
             cmb_gender.Name = "cmb_gender";
             cmb_gender.Size = new Size(263, 23);
@@ -153,7 +153,7 @@
             // 
             // btn_register
             // 
-            btn_register.Location = new Point(59, 487);
+            btn_register.Location = new Point(99, 486);
             btn_register.Name = "btn_register";
             btn_register.Size = new Size(105, 31);
             btn_register.TabIndex = 17;
@@ -162,22 +162,13 @@
             // 
             // btn_clearRigster
             // 
-            btn_clearRigster.Location = new Point(224, 487);
+            btn_clearRigster.Location = new Point(361, 496);
             btn_clearRigster.Name = "btn_clearRigster";
             btn_clearRigster.Size = new Size(105, 31);
             btn_clearRigster.TabIndex = 18;
             btn_clearRigster.Text = "Clear";
             btn_clearRigster.UseVisualStyleBackColor = true;
             btn_clearRigster.Click += button1_Click;
-            // 
-            // btn_editRegister
-            // 
-            btn_editRegister.Location = new Point(401, 487);
-            btn_editRegister.Name = "btn_editRegister";
-            btn_editRegister.Size = new Size(105, 31);
-            btn_editRegister.TabIndex = 19;
-            btn_editRegister.Text = "Edit";
-            btn_editRegister.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -196,25 +187,26 @@
             txt_firstName.Name = "txt_firstName";
             txt_firstName.Size = new Size(263, 23);
             txt_firstName.TabIndex = 7;
+            txt_firstName.TextChanged += txt_firstName_TextChanged;
             // 
             // comboBox1
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Barte", "brook" });
+            comboBox1.Items.AddRange(new object[] { "Admin", "Doctor", "Nurse", "HR", "OPs", "MLS", "Pharmasiste" });
             comboBox1.Location = new Point(203, 398);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(263, 23);
             comboBox1.TabIndex = 20;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // RegisterUsers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlDark;
+            BackColor = SystemColors.Control;
             ClientSize = new Size(544, 642);
             Controls.Add(comboBox1);
-            Controls.Add(btn_editRegister);
             Controls.Add(btn_clearRigster);
             Controls.Add(btn_register);
             Controls.Add(birthDate);
@@ -252,7 +244,6 @@
         private DateTimePicker birthDate;
         private Button btn_register;
         private Button btn_clearRigster;
-        private Button btn_editRegister;
         private Label label1;
         private TextBox txt_firstName;
         private ComboBox comboBox1;

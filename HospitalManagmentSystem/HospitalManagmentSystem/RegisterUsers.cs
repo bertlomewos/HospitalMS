@@ -46,5 +46,15 @@ namespace HospitalManagmentSystem
         {
 
         }
+
+        private void txt_firstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

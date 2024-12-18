@@ -175,14 +175,10 @@ namespace HospitalManagmentSystem
                     MySqlDataReader read = mySqlCommand.ExecuteReader();
                     while (read.Read())
                     {
-                        if (username.Equals(read.GetString("UserName")) && password.Equals(read.GetString("Password")))
-                        {
-                            MessageBox.Show("Successful Login");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalide Login");
-                        }
+                        Admin admin = new Admin();
+                        admin.Show();
+                        this.Hide();
+
                     }
                     cm.mySql.Close();
                 }

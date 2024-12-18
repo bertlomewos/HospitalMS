@@ -30,110 +30,169 @@ namespace HospitalManagmentSystem
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginPage));
             label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
             txt_user = new TextBox();
             txt_password = new TextBox();
             btn_login = new Button();
             btn_clearLogin = new Button();
             dateTimePicker1 = new DateTimePicker();
+            label4 = new Label();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            label5 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Arial", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(114, 61);
+            label1.Font = new Font("Bauhaus 93", 22F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(0, 117, 214);
+            label1.Location = new Point(283, 120);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(379, 34);
+            label1.Size = new Size(365, 50);
             label1.TabIndex = 0;
-            label1.Text = "Welcome To HMS Hospital";
+            label1.Text = "Welcome To HMS \r\n";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(107, 155);
+            label2.Location = new Point(153, 258);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(140, 24);
+            label2.Size = new Size(0, 37);
             label2.TabIndex = 1;
-            label2.Text = "USER NAME:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(107, 217);
-            label3.Name = "label3";
-            label3.Size = new Size(116, 24);
-            label3.TabIndex = 2;
-            label3.Text = "Password:";
+            label2.Click += label2_Click;
             // 
             // txt_user
             // 
-            txt_user.Location = new Point(268, 156);
+            txt_user.BorderStyle = BorderStyle.None;
+            txt_user.Location = new Point(354, 260);
+            txt_user.Margin = new Padding(4, 5, 4, 5);
             txt_user.MaxLength = 25;
             txt_user.Name = "txt_user";
-            txt_user.Size = new Size(225, 23);
+            txt_user.Size = new Size(349, 24);
             txt_user.TabIndex = 3;
             // 
             // txt_password
             // 
-            txt_password.Location = new Point(268, 217);
+            txt_password.BorderStyle = BorderStyle.None;
+            txt_password.Location = new Point(354, 362);
+            txt_password.Margin = new Padding(4, 5, 4, 5);
             txt_password.Name = "txt_password";
             txt_password.PasswordChar = '*';
-            txt_password.Size = new Size(225, 23);
+            txt_password.Size = new Size(349, 24);
             txt_password.TabIndex = 4;
             txt_password.TextChanged += txt_password_TextChanged;
             // 
             // btn_login
             // 
-            btn_login.BackColor = SystemColors.Control;
-            btn_login.Location = new Point(88, 297);
+            btn_login.BackColor = Color.FromArgb(0, 117, 214);
+            btn_login.FlatStyle = FlatStyle.Flat;
+            btn_login.Font = new Font("Bahnschrift", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_login.ForeColor = Color.White;
+            btn_login.Location = new Point(383, 487);
+            btn_login.Margin = new Padding(4, 5, 4, 5);
             btn_login.Name = "btn_login";
-            btn_login.Size = new Size(126, 32);
+            btn_login.Size = new Size(320, 53);
             btn_login.TabIndex = 5;
-            btn_login.Text = "Log In";
+            btn_login.Text = "LOG IN";
+            btn_login.TextImageRelation = TextImageRelation.ImageAboveText;
             btn_login.UseVisualStyleBackColor = false;
             btn_login.Click += btn_login_Click;
             // 
             // btn_clearLogin
             // 
-            btn_clearLogin.Location = new Point(367, 297);
+            btn_clearLogin.BackColor = Color.White;
+            btn_clearLogin.FlatAppearance.BorderSize = 0;
+            btn_clearLogin.FlatStyle = FlatStyle.Flat;
+            btn_clearLogin.Font = new Font("Bahnschrift", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_clearLogin.ForeColor = Color.FromArgb(0, 117, 212);
+            btn_clearLogin.Location = new Point(580, 441);
+            btn_clearLogin.Margin = new Padding(4, 5, 4, 5);
             btn_clearLogin.Name = "btn_clearLogin";
-            btn_clearLogin.Size = new Size(126, 32);
+            btn_clearLogin.Size = new Size(137, 36);
             btn_clearLogin.TabIndex = 6;
-            btn_clearLogin.Text = "Clear";
-            btn_clearLogin.UseVisualStyleBackColor = true;
+            btn_clearLogin.Text = "Clear Fields";
+            btn_clearLogin.UseVisualStyleBackColor = false;
             btn_clearLogin.Click += btn_clearLogin_Click;
             // 
             // dateTimePicker1
             // 
             dateTimePicker1.Enabled = false;
-            dateTimePicker1.Location = new Point(447, 12);
+            dateTimePicker1.Location = new Point(639, 20);
+            dateTimePicker1.Margin = new Padding(4, 5, 4, 5);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.Size = new Size(284, 31);
             dateTimePicker1.TabIndex = 7;
+            // 
+            // label4
+            // 
+            label4.BackColor = Color.FromArgb(0, 117, 214);
+            label4.Location = new Point(273, 298);
+            label4.Name = "label4";
+            label4.Size = new Size(430, 5);
+            label4.TabIndex = 8;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(256, 232);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(91, 63);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.White;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(256, 336);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(91, 63);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 11;
+            pictureBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            label5.BackColor = Color.FromArgb(0, 117, 214);
+            label5.Location = new Point(273, 402);
+            label5.Name = "label5";
+            label5.Size = new Size(430, 5);
+            label5.TabIndex = 10;
             // 
             // LoginPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlDark;
-            ClientSize = new Size(659, 436);
+            BackColor = Color.White;
+            ClientSize = new Size(938, 724);
+            Controls.Add(pictureBox2);
+            Controls.Add(label5);
+            Controls.Add(pictureBox1);
+            Controls.Add(label4);
             Controls.Add(dateTimePicker1);
             Controls.Add(btn_clearLogin);
             Controls.Add(btn_login);
             Controls.Add(txt_password);
             Controls.Add(txt_user);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "LoginPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LogIn";
             Load += LoginPage_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -142,7 +201,6 @@ namespace HospitalManagmentSystem
 
         private Label label1;
         private Label label2;
-        private Label label3;
         private TextBox txt_user;
         private TextBox txt_password;
         private Button btn_login;
@@ -198,5 +256,10 @@ namespace HospitalManagmentSystem
         {
             // Add form load logic if needed
         }
+
+        private Label label4;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private Label label5;
     }
 }

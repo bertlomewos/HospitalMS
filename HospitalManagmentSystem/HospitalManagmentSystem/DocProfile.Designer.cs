@@ -1,6 +1,6 @@
 ﻿namespace Doc
 {
-    partial class Profile
+    partial class DocProfile
     {
         /// <summary>
         /// Required designer variable.

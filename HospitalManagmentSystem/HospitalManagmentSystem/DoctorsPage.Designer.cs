@@ -1,14 +1,14 @@
-﻿namespace HospitalManagmentSystem
+﻿namespace Doc
 {
     partial class DoctorsPage
     {
         /// <summary>
-        /// Required designer variable.
+        ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,63 +23,101 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
-            textBox1 = new TextBox();
+            dataGridView1 = new DataGridView();
+            btnload = new Button();
+            menuStrip1 = new MenuStrip();
+            profileToolStripMenuItem = new ToolStripMenuItem();
+            appointmentsToolStripMenuItem = new ToolStripMenuItem();
+            reportToolStripMenuItem = new ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // button1
+            // dataGridView1
             // 
-            button1.Location = new Point(273, 229);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(82, 22);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(12, 259);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(776, 188);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // button2
+            // btnload
             // 
-            button2.Location = new Point(500, 89);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(82, 22);
-            button2.TabIndex = 1;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            btnload.Location = new Point(12, 224);
+            btnload.Name = "btnload";
+            btnload.Size = new Size(120, 29);
+            btnload.TabIndex = 1;
+            btnload.Text = "Load patients";
+            btnload.UseVisualStyleBackColor = true;
+            btnload.Click += btnload_Click;
             // 
-            // textBox1
+            // menuStrip1
             // 
-            textBox1.Location = new Point(324, 128);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(110, 23);
-            textBox1.TabIndex = 2;
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem, appointmentsToolStripMenuItem, reportToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 28);
+            menuStrip1.TabIndex = 4;
+            menuStrip1.Text = "menuStrip1";
             // 
-            // DoctorsPage
+            // profileToolStripMenuItem
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            profileToolStripMenuItem.Name = "profileToolStripMenuItem";
+            profileToolStripMenuItem.Size = new Size(66, 24);
+            profileToolStripMenuItem.Text = "Profile";
+            profileToolStripMenuItem.Click += profileToolStripMenuItem_Click;
+            // 
+            // appointmentsToolStripMenuItem
+            // 
+            appointmentsToolStripMenuItem.Name = "appointmentsToolStripMenuItem";
+            appointmentsToolStripMenuItem.Size = new Size(117, 24);
+            appointmentsToolStripMenuItem.Text = "Appointments";
+            // 
+            // reportToolStripMenuItem
+            // 
+            reportToolStripMenuItem.Name = "reportToolStripMenuItem";
+            reportToolStripMenuItem.Size = new Size(68, 24);
+            reportToolStripMenuItem.Text = "Report";
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
-            Controls.Add(textBox1);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Margin = new Padding(3, 2, 3, 2);
-            Name = "DoctorsPage";
-            Text = "DoctorsPage";
+            ClientSize = new Size(800, 450);
+            Controls.Add(btnload);
+            Controls.Add(dataGridView1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
-        private Button button2;
-        private TextBox textBox1;
+        private DataGridView dataGridView1;
+        private Button btnload;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem profileToolStripMenuItem;
+        private ToolStripMenuItem appointmentsToolStripMenuItem;
+        private ToolStripMenuItem reportToolStripMenuItem;
     }
 }

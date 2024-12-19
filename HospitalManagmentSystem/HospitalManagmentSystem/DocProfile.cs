@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace Doc
 {
-    public partial class Profile : Form
+    public partial class DocProfile : Form
     {
         private int DId;
-        public Profile(int dId)
+        public DocProfile(int dId)
         {
             InitializeComponent();
             this.DId = dId;

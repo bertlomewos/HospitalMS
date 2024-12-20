@@ -8,4 +8,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="boy_1144856.png" />
+    <None Remove="padlock_803954.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="boy_1144856.png" />
+    <Resource Include="padlock_803954.png" />
+  </ItemGroup>
+
 </Project>

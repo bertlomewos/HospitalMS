@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HospitalMS.Finance_UserControls;
 
 namespace HospitalMS
 {
@@ -24,9 +25,24 @@ namespace HospitalMS
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void budget_Click(object sender, RoutedEventArgs e)
         {
+
+            MainContent.Children.Clear();
+
+            MainContent.Children.Add(new Budget());
+
+            //budget_UC b = new budget_UC();
+
+        }
+
+        private void Transaction_click(object sender, RoutedEventArgs e)
+        {
+
+            MainContent.Children.Clear();
+            MainContent.Children.Add(new Transaction());
 
         }
     }
 }
+

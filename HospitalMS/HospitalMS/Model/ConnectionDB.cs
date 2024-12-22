@@ -60,7 +60,7 @@ namespace HospitalMS.UI
         }
 
         // Method to get a single row from the table
-        public DataRow GetRow(string tableName, string whereCondition, Dictionary<string, object> parameters)
+        public DataTable GetTable(string tableName, string whereCondition, Dictionary<string, object> parameters)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -68,7 +68,7 @@ namespace HospitalMS.UI
                 {
                     connection.Open();
 
-                    string query = $"SELECT * FROM {tableName} WHERE {whereCondition} LIMIT 1";
+                    string query = $"SELECT * FROM {tableName} WHERE {whereCondition}";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -81,11 +81,7 @@ namespace HospitalMS.UI
                         {
                             DataTable table = new DataTable();
                             adapter.Fill(table);
-
-                            if (table.Rows.Count > 0)
-                            {
-                                return table.Rows[0];
-                            }
+                            return table;
                         }
                     }
                 }

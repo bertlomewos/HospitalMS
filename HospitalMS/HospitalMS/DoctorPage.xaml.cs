@@ -2,7 +2,9 @@
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
+using HospitalMS.UI;
 using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 
 namespace HospitalMS
 {
@@ -10,91 +12,153 @@ namespace HospitalMS
     {
         private DataTable patientsTable;
         private int DId;
+        private ConnectionDB connectionDB = new ConnectionDB();
 
-        public DoctorPage()
+        public DoctorPage() 
         {
             InitializeComponent();
+        }
+        public DoctorPage(int doctorId) : this()
+        {
+            DId = doctorId;
             LoadPatients();
+        }
+        public DoctorPage(string someParam) : this()
+        {
+            // Handle the parameter
         }
 
         private void LoadPatients()
         {
+            if (DId == 0) return;
             string query = "SELECT PatientID, Name, RoomNumber, Status FROM patients WHERE DoctorID = @DoctorID";
-            try
+            var parameters = new Dictionary<string, object>
             {
-                using (MySqlConnection connection = dbconnection.GetConnection())
-                {
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@DoctorID", DId); // Replace with the actual doctor ID
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                        patientsTable = new DataTable();
-                        adapter.Fill(patientsTable);
-                        PatientsDataGrid.ItemsSource = patientsTable.DefaultView;
-                    }
-                }
+                { "DoctorID", DId } 
+            };
+
+            DataTable patients = connectionDB.GetTable("patients", "DoctorID = @DoctorID", parameters);
+            if (patients != null && patients.Rows.Count > 0)
+            {
+                patientsTable = patients; 
+                PatientsDataGrid.ItemsSource = patientsTable.DefaultView;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error loading patients: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("No patients found or error occurred.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        // Event handler for searching patients
-        private void SearchPatients_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void SearchPatients_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (patientsTable == null) return;
+
             string searchQuery = txtSearchPatients.Text.ToLower();
             var filteredRows = patientsTable.Select($"Name LIKE '%{searchQuery}%'");
             DataTable filteredTable = patientsTable.Clone();
+
             foreach (var row in filteredRows)
             {
                 filteredTable.ImportRow(row);
             }
+
             PatientsDataGrid.ItemsSource = filteredTable.DefaultView;
         }
 
-        // Event handler for filtering patients by status
         private void FilterPatientsByStatus(object sender, RoutedEventArgs e)
         {
-            if (patientsTable == null)
-            {
-                // Handle the null case appropriately
-                MessageBox.Show("Patients table is not initialized.");
-                return;
-            }
+            if (patientsTable == null) return;
 
             var selectedItem = comboFilterStatus.SelectedItem as ComboBoxItem;
             string selectedStatus = selectedItem?.Content.ToString();
 
-            if (string.IsNullOrEmpty(selectedStatus))
-                return;
+            if (string.IsNullOrEmpty(selectedStatus)) return;
 
             DataView filteredView = patientsTable.DefaultView;
-            // Filter the patients based on the selected status
             filteredView.RowFilter = $"Status = '{selectedStatus}'";
             PatientsDataGrid.ItemsSource = filteredView;
         }
 
-
-        // Event handler for View Details button click
         private void ViewDetails_Click(object sender, RoutedEventArgs e)
         {
-            // Implement logic to view patient details
-            MessageBox.Show("View details functionality to be implemented.");
+            DataRowView selectedRow = PatientsDataGrid.SelectedItem as DataRowView;
+
+            if (selectedRow != null)
+            {
+                // Retrieve the PatientID from the selected row
+                int selectedPatientId = Convert.ToInt32(selectedRow["PatientID"]);
+
+                // Implement the logic to view patient details based on selectedPatientId
+                MessageBox.Show($"View details for Patient ID: {selectedPatientId}");
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient.");
+            }
         }
 
-        // Event handler for Prescribe Medication button click
         private void PrescribeMedication_Click(object sender, RoutedEventArgs e)
         {
-            // Implement logic for prescribing medication
-            MessageBox.Show("Prescribe medication functionality to be implemented.");
+            DataRowView selectedRow = PatientsDataGrid.SelectedItem as DataRowView;
+
+            if (selectedRow != null)
+            {
+                // Retrieve the PatientID from the selected row
+                int selectedPatientId = Convert.ToInt32(selectedRow["PatientID"]);
+
+                var prescriptionData = new Dictionary<string, object>
+                {
+                    { "PatientID", selectedPatientId }, 
+                    { "Medication", "MedName" }, 
+                    { "DoctorID", DId }
+                };
+
+                bool result = connectionDB.SetTable("prescriptions", prescriptionData);
+                if (result)
+                {
+                    MessageBox.Show("Medication prescribed successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Failed to prescribe medication.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient.");
+            }
         }
 
-        // Event handler for Request Lab Test button click
         private void RequestLabTest_Click(object sender, RoutedEventArgs e)
         {
-            // Implement logic for requesting a lab test
-            MessageBox.Show("Request lab test functionality to be implemented.");
+            DataRowView selectedRow = PatientsDataGrid.SelectedItem as DataRowView;
+
+            if (selectedRow != null)
+            {
+                // Retrieve the PatientID from the selected row
+                int selectedPatientId = Convert.ToInt32(selectedRow["PatientID"]);
+
+                var labTestData = new Dictionary<string, object>
+                {
+                    { "PatientID", selectedPatientId }, // Use the selected patient's ID
+                    { "TestType", "Blood Test" }, // Example data
+                    { "DoctorID", DId }
+                };
+
+                bool result = connectionDB.SetTable("lab_tests", labTestData);
+                if (result)
+                {
+                    MessageBox.Show("Lab test requested successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Failed to request lab test.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient.");
+            }
         }
     }
 }

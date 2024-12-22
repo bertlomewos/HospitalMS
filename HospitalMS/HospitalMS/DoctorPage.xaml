@@ -3,18 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HospitalMS" xmlns:ewp="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:HospitalMS"
+        xmlns:ewp="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="DoctorPage" Height="450" Width="800">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,20">
-        <TextBlock Text="Doctor Dashboard" FontSize="24" FontWeight="Bold" />
-    </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,20">
+            <TextBlock Text="Doctor Dashboard" FontSize="24" FontWeight="Bold" />
+        </StackPanel>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -25,6 +26,7 @@
             <StackPanel Margin="10" Grid.Column="0">
                 <TextBlock Text="Assigned Patients" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
                 <DataGrid Name="PatientsDataGrid" AutoGenerateColumns="True" Height="300" />
+
                 <DockPanel Margin="0,10,0,0">
                     <TextBox Name="txtSearchPatients" Width="200" TextChanged="SearchPatients_TextChanged" />
                     <ComboBox Name="comboFilterStatus" Width="150" Margin="10,0,0,0" SelectionChanged="FilterPatientsByStatus">
@@ -36,12 +38,11 @@
                 <Button Content="View Details" Click="ViewDetails_Click" Margin="5" />
             </StackPanel>
 
-
-        <StackPanel Margin="10" Grid.Column="1">
-            <TextBlock Text="Actions" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
-            <Button Content="Prescribe Medication" Click="PrescribeMedication_Click" Margin="5" />
-            <Button Content="Request Lab Test" Click="RequestLabTest_Click" Margin="5" />
-        </StackPanel>
+            <StackPanel Margin="10" Grid.Column="1">
+                <TextBlock Text="Actions" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
+                <Button Content="Prescribe Medication" Click="PrescribeMedication_Click" Margin="5" />
+                <Button Content="Request Lab Test" Click="RequestLabTest_Click" Margin="5" />
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>

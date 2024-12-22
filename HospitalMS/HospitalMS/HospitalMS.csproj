@@ -9,18 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="boy_1144856.png" />
-    <None Remove="padlock_803954.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.1" />
-    <PackageReference Include="MySql.Data" Version="9.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="boy_1144856.png" />
-    <Resource Include="padlock_803954.png" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
   </ItemGroup>
 
 </Project>

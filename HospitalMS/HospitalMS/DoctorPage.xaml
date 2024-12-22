@@ -26,7 +26,7 @@
                 <TextBlock Text="Assigned Patients" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
                 <DataGrid Name="PatientsDataGrid" AutoGenerateColumns="True" Height="300" />
                 <DockPanel Margin="0,10,0,0">
-                    <ewp:WatermarkTextBox Name="txtSearchPatients" Width="200" Watermark="Search Patients" TextChanged="SearchPatients_TextChanged" />
+                    <TextBox Name="txtSearchPatients" Width="200" TextChanged="SearchPatients_TextChanged" />
                     <ComboBox Name="comboFilterStatus" Width="150" Margin="10,0,0,0" SelectionChanged="FilterPatientsByStatus">
                         <ComboBoxItem Content="All" IsSelected="True" />
                         <ComboBoxItem Content="Stable" />

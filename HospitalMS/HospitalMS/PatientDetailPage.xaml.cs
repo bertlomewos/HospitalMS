@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace HospitalMS
+{
+    /// <summary>
+    /// Interaction logic for PatientDetailPage.xaml
+    /// </summary>
+    public partial class PatientDetailPage : Window
+    {
+        private int patientId;
+
+        public PatientDetailPage(int patientId)
+        {
+            InitializeComponent();
+            this.patientId = patientId; 
+            LoadPatientDetails();
+        }
+        void LoadPatientDetails()
+        {
+            PatientIdTextBlock.Text = $"Patient ID: {patientId}";
+        }
+
+    }
+}

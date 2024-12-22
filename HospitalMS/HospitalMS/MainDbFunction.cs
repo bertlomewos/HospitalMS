@@ -18,7 +18,7 @@ namespace HospitalMS
         {
 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source=LAPTOP-6D8AGEG1;Database=HMS;Integrated Security=True;TrustServerCertificate=True;";
+            con.ConnectionString = "server=localhost;Uid=root;database=hospitalms;port=3306;Pwd=;";
 
             return con;
         }

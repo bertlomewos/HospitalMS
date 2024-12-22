@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="LoginPage" Height="450" Width="800" WindowState="Maximized" ResizeMode="CanResize" MinHeight="471.33" MinWidth="816">
     <Grid>
-        <Button Content="LOG IN" Margin="318,356,318,45" Height="33" Width="164" MinWidth="164" MinHeight="33" RenderTransformOrigin="0.5,0.5" BorderBrush="#00707070" Background="#FF0075D4" Foreground="White"/>
+        <Button Content="LOG IN" Margin="318,356,318,45" Height="33" Width="164" MinWidth="164" MinHeight="33" RenderTransformOrigin="0.5,0.5" BorderBrush="#00707070" Background="#FF0075D4" Foreground="White" Click="Button_Click"/>
         <TextBox x:Name="HMS" Margin="273,92,273,299" TextWrapping="Wrap" Text="Welcome to HMS" Width="252" Height="43" MinWidth="252" MinHeight="43" Foreground="#FF0075D4" FontWeight="Bold" FontSize="30" BorderBrush="#00ABADB3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" HorizontalContentAlignment="Right"/>
         <Image Margin="209,186,536,193" RenderTransformOrigin="0.551,-0.04" Source="/boy_1144856.png" MinWidth="45" MinHeight="45" MaxWidth="45" MaxHeight="45"/>
         <Rectangle Height="1" Margin="270,239,270,194" Stroke="#FF0075D4" Width="259" Fill="#FF0075D4"/>

@@ -8,14 +8,20 @@
         Title="PatientDetailPage" Height="450" Width="800">
     <Grid>
         <TextBlock Name="PatientIdTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="16" />
-
         <TextBlock Name="NameTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0" FontSize="16" />
-
         <TextBlock Name="AgeTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,70,0,0" FontSize="16" />
-
         <TextBlock Name="DiseaseTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,100,0,0" FontSize="16" />
-
         <TextBlock Name="StatusTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,130,0,0" FontSize="16" />
-    
+
+
+        <TextBox Name="NameTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,40,0,0" Width="200" Visibility="Collapsed"/>
+        <TextBox Name="AgeTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,70,0,0" Width="200" Visibility="Collapsed"/>
+        <TextBox Name="DiseaseTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,100,0,0" Width="200" Visibility="Collapsed"/>
+        <TextBox Name="StatusTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,130,0,0" Width="200" Visibility="Collapsed"/>
+
+        <!-- Edit and Save Buttons -->
+        <Button Name="EditButton" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,160,0,0" Click="EditButton_Click"/>
+        <Button Name="SaveButton" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,160,0,0" Click="SaveButton_Click" Visibility="Collapsed"/>
+
     </Grid>
 </Window>

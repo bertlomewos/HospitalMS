@@ -90,8 +90,10 @@ namespace HospitalMS
             if (selectedRow != null)
             {
                 int selectedPatientId = Convert.ToInt32(selectedRow["PatientID"]);
-                MessageBox.Show($"View details for Patient ID: {selectedPatientId}");
-                // Implement logic to view patient details
+                
+                PatientDetailPage detailsPage = new PatientDetailPage(selectedPatientId);
+                detailsPage.Show();
+
             }
             else
             {
@@ -107,14 +109,14 @@ namespace HospitalMS
             {
                 int selectedPatientId = Convert.ToInt32(selectedRow["PatientID"]);
 
-                var prescriptionData = new Dictionary<string, object>
+                var columnValues = new Dictionary<string, object>
                     {
                         { "PatientID", selectedPatientId },
                         { "Medication", "MedName" },
                         { "DId", DId }
                     };
 
-                bool result = connectionDB.SetTable("prescriptions", prescriptionData);
+                bool result = connectionDB.SetTable("INSERT", "prescriptions", columnValues);
                 if (result)
                 {
                     MessageBox.Show("Medication prescribed successfully.");
@@ -138,14 +140,14 @@ namespace HospitalMS
             {
                 int selectedPatientId = Convert.ToInt32(selectedRow["PatientID"]);
 
-                var labTestData = new Dictionary<string, object>
+                var columnValues = new Dictionary<string, object>
                     {
                         { "PatientID", selectedPatientId },
                         { "TestType", "Blood Test" },
                         { "DId", DId }
                     };
 
-                bool result = connectionDB.SetTable("lab_tests", labTestData);
+                bool result = connectionDB.SetTable("INSERT", "lab_tests", columnValues);
                 if (result)
                 {
                     MessageBox.Show("Lab test requested successfully.");

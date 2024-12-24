@@ -11,16 +11,18 @@ namespace HospitalMS
     public partial class DoctorPage : Window
     {
         private DataTable PatientsTable = new DataTable(); // Initialize PatientsTable
-        private int DId = 1; // Doctor ID
+        private int DId; // Doctor ID
         private ConnectionDB connectionDB = new ConnectionDB();
 
         public DoctorPage()
         {
             InitializeComponent();
+            DId = 1; 
+            LoadPatients();
         }
-
-        public DoctorPage(int DId) : this()
+        public DoctorPage(int DId)
         {
+            InitializeComponent();
             this.DId = DId;
             LoadPatients();
         }
@@ -29,14 +31,13 @@ namespace HospitalMS
         {
             if (DId == 0) return;
 
-            string tableName = "Patient";
-            string whereCondition = "DId = @DId";
+            string query = "SELECT PatientID, Name, Age, Disease FROM Patient WHERE DId = @DId";
             var parameters = new Dictionary<string, object>
                 {
                     { "DId", DId }
                 };
 
-            DataTable patient = connectionDB.GetTable(tableName, whereCondition, parameters);
+            DataTable patient = connectionDB.GetTable("Patient", "DId = @DId", parameters);
             if (patient != null && patient.Rows.Count > 0)
             {
                 PatientsTable = patient;

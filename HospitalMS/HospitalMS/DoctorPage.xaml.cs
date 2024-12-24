@@ -2,94 +2,95 @@
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
-using HospitalMS.UI;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
+using HospitalMS.UI;
 
 namespace HospitalMS
 {
     public partial class DoctorPage : Window
     {
-        private DataTable patientsTable;
-        private int DId;
+        private DataTable PatientsTable = new DataTable(); // Initialize PatientsTable
+        private int DId = 1; // Doctor ID
         private ConnectionDB connectionDB = new ConnectionDB();
 
-        public DoctorPage() 
+        public DoctorPage()
         {
             InitializeComponent();
         }
-        public DoctorPage(int doctorId) : this()
+
+        public DoctorPage(int DId) : this()
         {
-            DId = doctorId;
+            this.DId = DId;
             LoadPatients();
-        }
-        public DoctorPage(string someParam) : this()
-        {
-            // Handle the parameter
         }
 
         private void LoadPatients()
         {
             if (DId == 0) return;
-            string query = "SELECT PatientID, Name, RoomNumber, Status FROM patients WHERE DoctorID = @DoctorID";
-            var parameters = new Dictionary<string, object>
-            {
-                { "DoctorID", DId } 
-            };
 
-            DataTable patients = connectionDB.GetTable("patients", "DoctorID = @DoctorID", parameters);
-            if (patients != null && patients.Rows.Count > 0)
+            string tableName = "Patient";
+            string whereCondition = "DId = @DId";
+            var parameters = new Dictionary<string, object>
+                {
+                    { "DId", DId }
+                };
+
+            DataTable patient = connectionDB.GetTable(tableName, whereCondition, parameters);
+            if (patient != null && patient.Rows.Count > 0)
             {
-                patientsTable = patients; 
-                PatientsDataGrid.ItemsSource = patientsTable.DefaultView;
+                PatientsTable = patient;
+                patientsDataGrid.ItemsSource = PatientsTable.DefaultView;
             }
             else
             {
-                MessageBox.Show("No patients found or error occurred.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("No patients found or an error occurred.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void SearchPatients_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (patientsTable == null) return;
+            if (PatientsTable == null) return;
 
-            string searchQuery = txtSearchPatients.Text.ToLower();
-            var filteredRows = patientsTable.Select($"Name LIKE '%{searchQuery}%'");
-            DataTable filteredTable = patientsTable.Clone();
+            string searchQuery = (txtSearchpatient.Text?? string.Empty).ToLower();
+            var filteredRows = PatientsTable.Select($"Name LIKE '%{searchQuery}%'");
+            DataTable filteredTable = PatientsTable.Clone();
 
             foreach (var row in filteredRows)
             {
                 filteredTable.ImportRow(row);
             }
 
-            PatientsDataGrid.ItemsSource = filteredTable.DefaultView;
+            patientsDataGrid.ItemsSource = filteredTable.DefaultView;
         }
 
         private void FilterPatientsByStatus(object sender, RoutedEventArgs e)
         {
-            if (patientsTable == null) return;
+            if (PatientsTable == null) return;
 
             var selectedItem = comboFilterStatus.SelectedItem as ComboBoxItem;
             string selectedStatus = selectedItem?.Content.ToString();
 
-            if (string.IsNullOrEmpty(selectedStatus)) return;
+            if (string.IsNullOrEmpty(selectedStatus) || selectedStatus == "All")
+            {
+                patientsDataGrid.ItemsSource = PatientsTable.DefaultView;
+                return;
+            }
 
-            DataView filteredView = patientsTable.DefaultView;
+            DataView filteredView = PatientsTable.DefaultView;
             filteredView.RowFilter = $"Status = '{selectedStatus}'";
-            PatientsDataGrid.ItemsSource = filteredView;
+            patientsDataGrid.ItemsSource = filteredView;
         }
 
         private void ViewDetails_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView selectedRow = PatientsDataGrid.SelectedItem as DataRowView;
+            DataRowView selectedRow = patientsDataGrid.SelectedItem as DataRowView;
 
             if (selectedRow != null)
             {
-                // Retrieve the PatientID from the selected row
                 int selectedPatientId = Convert.ToInt32(selectedRow["PatientID"]);
-
-                // Implement the logic to view patient details based on selectedPatientId
                 MessageBox.Show($"View details for Patient ID: {selectedPatientId}");
+                // Implement logic to view patient details
             }
             else
             {
@@ -99,19 +100,18 @@ namespace HospitalMS
 
         private void PrescribeMedication_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView selectedRow = PatientsDataGrid.SelectedItem as DataRowView;
+            DataRowView selectedRow = patientsDataGrid.SelectedItem as DataRowView;
 
             if (selectedRow != null)
             {
-                // Retrieve the PatientID from the selected row
                 int selectedPatientId = Convert.ToInt32(selectedRow["PatientID"]);
 
                 var prescriptionData = new Dictionary<string, object>
-                {
-                    { "PatientID", selectedPatientId }, 
-                    { "Medication", "MedName" }, 
-                    { "DoctorID", DId }
-                };
+                    {
+                        { "PatientID", selectedPatientId },
+                        { "Medication", "MedName" },
+                        { "DId", DId }
+                    };
 
                 bool result = connectionDB.SetTable("prescriptions", prescriptionData);
                 if (result)
@@ -131,19 +131,18 @@ namespace HospitalMS
 
         private void RequestLabTest_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView selectedRow = PatientsDataGrid.SelectedItem as DataRowView;
+            DataRowView selectedRow = patientsDataGrid.SelectedItem as DataRowView;
 
             if (selectedRow != null)
             {
-                // Retrieve the PatientID from the selected row
                 int selectedPatientId = Convert.ToInt32(selectedRow["PatientID"]);
 
                 var labTestData = new Dictionary<string, object>
-                {
-                    { "PatientID", selectedPatientId }, // Use the selected patient's ID
-                    { "TestType", "Blood Test" }, // Example data
-                    { "DoctorID", DId }
-                };
+                    {
+                        { "PatientID", selectedPatientId },
+                        { "TestType", "Blood Test" },
+                        { "DId", DId }
+                    };
 
                 bool result = connectionDB.SetTable("lab_tests", labTestData);
                 if (result)

@@ -24,15 +24,15 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Margin="10" Grid.Column="0">
-                <TextBlock Text="Assigned Patients" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
-                <DataGrid Name="PatientsDataGrid" AutoGenerateColumns="True" Height="300" />
+                <TextBlock Text="Assigned patient" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
+                <DataGrid Name="patientsDataGrid" AutoGenerateColumns="True" Height="300" />
 
                 <DockPanel Margin="0,10,0,0">
-                    <TextBox Name="txtSearchPatients" Width="200" TextChanged="SearchPatients_TextChanged" />
-                    <ComboBox Name="comboFilterStatus" Width="150" Margin="10,0,0,0" SelectionChanged="FilterPatientsByStatus">
-                        <ComboBoxItem Content="All" IsSelected="True" />
-                        <ComboBoxItem Content="Stable" />
-                        <ComboBoxItem Content="Critical" />
+                    <TextBox Name="txtSearchpatient" Width="200" TextChanged="SearchPatients_TextChanged" />
+                    <ComboBox Name="comboFilterStatus" SelectionChanged="FilterPatientsByStatus">
+                        <ComboBoxItem Content="All" />
+                        <ComboBoxItem Content="Admitted" />
+                        <ComboBoxItem Content="Discharged" />
                     </ComboBox>
                 </DockPanel>
             </StackPanel>

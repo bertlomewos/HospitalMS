@@ -35,7 +35,7 @@ namespace HospitalMS.Finance_UserControls
 
             try
             {
-                string query = "Select * from financetb"; // Declare query
+                string query = "Select Revenue,Expenses, Budget from financetb"; // Declare query
                 DataSet ds = db.getData(query);          // Call the database function
                 BudgetGrid.ItemsSource = ds.Tables[0].DefaultView; // Set data to the grid
             }

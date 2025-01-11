@@ -1,5 +1,4 @@
-﻿using HospitalMS.UI;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,28 +15,13 @@ using System.Windows.Shapes;
 namespace HospitalMS
 {
     /// <summary>
-    /// Interaction logic for LoginPage.xaml
+    /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class LoginPage : Window
+    public partial class LoginWindow : Window
     {
-        public LoginPage()
+        public LoginWindow()
         {
             InitializeComponent();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

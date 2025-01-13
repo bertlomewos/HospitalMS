@@ -40,7 +40,14 @@ namespace HospitalMS
                 TheHolder = new List<User>();
                 TheHolder = getFromDb.GetUser();
             }
-          
+            else if (role == "Doctor")
+            {
+                this.Show();
+                MainFrame.Navigate(new DocPage());
+                TheHolder = new List<User>();
+                TheHolder = getFromDb.GetUser();
+            }
+
         }
 
     }

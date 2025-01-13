@@ -30,9 +30,9 @@ namespace HospitalMS
             if(role == "Admin")
             {
                 this.Show();
-                //LoginWindow login = new LoginWindow();
+                LoginWindow login = new LoginWindow();
                 MainFrame.Navigate(new AdminPage());
-                //login.Close();
+                login.Close();
             }
         }
     }

@@ -57,7 +57,6 @@ namespace HospitalMS
                     {
                         MainWindow main = new MainWindow();
                         main.ChangeMainFrame(user.Role);
-                        this.Close();
                         return;
                     }
                 }

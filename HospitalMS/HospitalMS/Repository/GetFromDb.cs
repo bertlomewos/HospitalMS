@@ -37,6 +37,21 @@ namespace HospitalMS.Repository
                 return users;
             }
         }
+        /*public List<Doc> GetDoc()
+        {
+            List<Doc> docs = new List<Doc>();
+            string GetQuery = "SELECT * FROM doctors";
+            using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+            {
+                MySqlCommand GetCommand = new MySqlCommand(GetQuery, connection);
+                connection.Open();
+                MySqlDataReader reader = GetCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    docs.Add(new Doc(
+                            ));
+                }
+        }*/
 
     }
 }

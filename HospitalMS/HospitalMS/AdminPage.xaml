@@ -9,6 +9,17 @@
       Title="AdminPage">
 
     <Grid>
-        
+        <!-- Menu Bar -->
+        <Menu HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="#FF0075D4" Foreground="White" FontWeight="Bold">
+            <MenuItem Header="Dashboard" Click="DashboardClicked"/>
+            <MenuItem Header="Register" Click="RegisterClicked"/>
+            <MenuItem Header="Profile" Click="ProfileClicked"/>
+            <MenuItem Header="Log Out" Click="LogOutClicked"/>
+        </Menu>
+
+        <!-- Content Area -->
+        <Grid Margin="0,30,0,0">
+            <Frame x:Name="AdminFrame" NavigationUIVisibility="Hidden"/>
+        </Grid>
     </Grid>
 </Page>

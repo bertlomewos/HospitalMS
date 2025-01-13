@@ -3,10 +3,91 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HospitalMS"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800">
+        Title="LoginWindow"
+        Height="450"
+        Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#FFFAFAFA">
     <Grid>
-        
+        <Grid VerticalAlignment="Center">
+        <!-- Define Rows and Columns -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Title -->
+            <RowDefinition Height="Auto" />
+            <!-- Spacing -->
+            <RowDefinition Height="Auto" />
+            <!-- User ID -->
+            <RowDefinition Height="Auto" />
+            <!-- Password -->
+            <RowDefinition Height="Auto" />
+            <!-- Button -->
+            <RowDefinition Height="*" />
+            <!-- Remaining Space -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <!-- Label -->
+            <ColumnDefinition Width="3*" />
+            <!-- Input -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Title -->
+        <Label Grid.Row="0" Grid.ColumnSpan="2"
+               Content="Welcome to HMS"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               FontSize="28"
+               FontWeight="Bold"
+               Foreground="#FF0075D4"
+               Margin="0,20,0,30" />
+
+        <!-- User ID Label -->
+        <Label Grid.Row="2" Grid.Column="0"
+               Content="User ID:"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               FontSize="16"
+               Margin="0,0,10,10" />
+
+        <!-- User ID TextBox -->
+        <TextBox x:Name="UserID"
+                 Grid.Row="2" Grid.Column="1"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Width="250"
+                 Height="30"
+                 Margin="0,0,0,10" />
+
+        <!-- Password Label -->
+        <Label Grid.Row="3" Grid.Column="0"
+               Content="Password:"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               FontSize="16"
+               Margin="0,0,10,10" />
+
+        <!-- PasswordBox -->
+        <PasswordBox x:Name="PasswordBox"
+                     Grid.Row="3" Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+                     Width="250"
+                     Height="30"
+                     Margin="0,0,0,10" />
+
+        <!-- Login Button -->
+        <Button Grid.Row="4" Grid.ColumnSpan="2"
+                Content="Login"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="150"
+                Height="40"
+                Background="#FF0075D4"
+                Foreground="White"
+                FontWeight="Bold"
+                Margin="0,20,0,0" />
     </Grid>
+ </Grid>
 </Window>

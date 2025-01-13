@@ -10,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HospitalMS
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for DashBoard.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DashBoard : Page
     {
-        public MainWindow()
+        public DashBoard()
         {
             InitializeComponent();
-            MainFrame.Navigate(new AdminPage());
         }
     }
 }

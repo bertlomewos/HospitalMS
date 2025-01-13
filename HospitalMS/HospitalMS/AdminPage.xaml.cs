@@ -24,5 +24,25 @@ namespace HospitalMS
         {
             InitializeComponent();
         }
+
+        private void RegisterClicked(object sender, RoutedEventArgs e)
+        {
+            AdminFrame.Navigate(new RegisterPage());
+        }
+
+        private void DashboardClicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ProfileClicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LogOutClicked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

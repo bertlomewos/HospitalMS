@@ -55,7 +55,10 @@ namespace HospitalMS
                 {
                     if (user.Id.ToString() == UID && user.Password == Pass)
                     {
-                        MessageBox.Show("Hey who knew u were in here");
+                        MainWindow main = new MainWindow();
+                        main.ChangeMainFrame(user.Role);
+                        this.Close();
+                        return;
                     }
                 }
             }

@@ -22,7 +22,18 @@ namespace HospitalMS
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new AdminPage());
+           
+        }
+
+        public void ChangeMainFrame(string role)
+        {
+            if(role == "Admin")
+            {
+                this.Show();
+                //LoginWindow login = new LoginWindow();
+                MainFrame.Navigate(new AdminPage());
+                //login.Close();
+            }
         }
     }
 }

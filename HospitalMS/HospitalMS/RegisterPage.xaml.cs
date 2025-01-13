@@ -39,7 +39,7 @@ namespace HospitalMS
             int Age = 0;
             string Gender = rMale.IsChecked == true ? "Male" : rFemale.IsChecked == true ? "Female" : null;
             string FIN = FINInput.Text;
-            User newUser = new User(Fname, Lname, Pass, Role, Age, Gender, FIN);
+            User newUser = new Admin(Fname, Lname, Pass, Role, Age, Gender, FIN);
             MessageBox.Show(userControl.checkForUserinfo(newUser));
             
 

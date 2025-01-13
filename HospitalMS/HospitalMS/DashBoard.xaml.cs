@@ -22,7 +22,6 @@ namespace HospitalMS
     /// </summary>
     public partial class DashBoard : Page
     {
-        GetFromDb getFromDb = new GetFromDb();
         public DashBoard()
         {
             InitializeComponent();
@@ -31,7 +30,7 @@ namespace HospitalMS
 
         public void LoadData()
         {
-            List<User> users = getFromDb.GetUser();
+            List<User> users = MainWindow.TheHolder;
             UserData.ItemsSource = users;
         }
     }

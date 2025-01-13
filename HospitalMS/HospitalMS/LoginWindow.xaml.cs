@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HospitalMS.Model;
+using HospitalMS.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,51 @@ namespace HospitalMS
     /// </summary>
     public partial class LoginWindow : Window
     {
+        GetFromDb getFromDb = new GetFromDb();
         public LoginWindow()
         {
             InitializeComponent();
+        }
+
+        private void LoginBtn(object sender, RoutedEventArgs e)
+        {
+            ValiditateUser();
+        }
+
+        public void ValiditateUser()
+        {
+
+            string UID = UserID.Text;
+            string Pass = PasswordBox.Password;
+            try
+            {
+                if (string.IsNullOrEmpty(Pass))
+                {
+                    MessageBox.Show("Please Enter Password");
+                    return;
+                }
+                if (string.IsNullOrEmpty(UID))
+                {
+                    MessageBox.Show("Please Enter User ID");
+                    return;
+                }
+                List<User> users = getFromDb.GetUser();
+
+                foreach (User user in users)
+                {
+                    if (user.Id.ToString() == UID && user.Password == Pass)
+                    {
+                        MessageBox.Show("Hey who knew u were in here");
+                    }
+                }
+            }
+            catch (Exception ex)
+            { 
+                MessageBox.Show(ex.Message);
+            }
+            
+
+
         }
     }
 }

@@ -9,6 +9,6 @@
       Title="DashBoard">
 
     <Grid>
-        
+        <DataGrid Name="UserData"/>
     </Grid>
 </Page>

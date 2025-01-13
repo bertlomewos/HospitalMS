@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HospitalMS.Model;
+using HospitalMS.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,17 @@ namespace HospitalMS
     /// </summary>
     public partial class DashBoard : Page
     {
+        GetFromDb getFromDb = new GetFromDb();
         public DashBoard()
         {
             InitializeComponent();
+            LoadData();
+        }
+
+        public void LoadData()
+        {
+            List<User> users = getFromDb.GetUser();
+            UserData.ItemsSource = users;
         }
     }
 }

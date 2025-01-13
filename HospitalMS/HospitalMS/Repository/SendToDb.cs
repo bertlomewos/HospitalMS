@@ -29,8 +29,7 @@ namespace HospitalMS.Repository
                     insertCommand.Parameters.AddWithValue("@sex", user.Sex);
                     insertCommand.Parameters.AddWithValue("@FIN", user.FIN);
                     connection.Open();
-                    insertCommand.ExecuteNonQuery();
-                    User.Id = Convert.ToInt32(insertCommand.ExecuteScalar());
+                    user.Id = Convert.ToInt32(insertCommand.ExecuteScalar());
                 }
 
             }
@@ -39,7 +38,7 @@ namespace HospitalMS.Repository
                 return ex.Message;
             }
 
-          return User.Id.ToString();
+          return user.Id.ToString();
         }
     }
 }

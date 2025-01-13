@@ -25,7 +25,9 @@ namespace HospitalMS.Control
             {
                 return "User can not be null";
             }
-        return "User " + sd.InsertUser(user) + " has been registered";
+
+            string result = sd.InsertUser(user);
+         return "User " + result + " has been registered";
         }
     }
 }

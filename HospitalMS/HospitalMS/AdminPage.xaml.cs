@@ -32,7 +32,7 @@ namespace HospitalMS
 
         private void DashboardClicked(object sender, RoutedEventArgs e)
         {
-
+            AdminFrame.Navigate(new DashBoard());
         }
 
         private void ProfileClicked(object sender, RoutedEventArgs e)

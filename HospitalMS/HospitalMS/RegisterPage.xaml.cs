@@ -30,11 +30,17 @@ namespace HospitalMS
         }
 
         private void Reg_User(object sender, RoutedEventArgs e)
-        {// Capture the input values from the form
+        {
+            RegisterUSer();
+
+        }
+
+        public void RegisterUSer()
+        {
             string Fname = FirstNameInput.Text;
             string Lname = LastNameInput.Text;
-            string Pass = PasswordInput.Password; // Access PasswordBox password value
-            string Role = (RoleInput.SelectedItem as ComboBoxItem)?.Content.ToString(); // Get selected role
+            string Pass = PasswordInput.Password;
+            string Role = (RoleInput.SelectedItem as ComboBoxItem)?.Content.ToString();
             int Age = 0;
             if (!int.TryParse(AgeInput.Text, out Age))
             {
@@ -59,8 +65,6 @@ namespace HospitalMS
 
             User newUser = new User(Fname, Lname, Pass, Role, Age, Gender, FIN);
             MessageBox.Show(userControl.checkForUserinfo(newUser));
-
-
         }
     }
 }

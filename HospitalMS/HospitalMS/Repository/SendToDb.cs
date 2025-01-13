@@ -41,6 +41,28 @@ namespace HospitalMS.Repository
           return user.Id.ToString();
         }
 
-        
+        public string InsertDoc(Doc doc)
+        {
+            string insertQuery = "INSERT INTO doctors " +
+                "(DId, Specialization) VALUES " +
+                "(@DId, @Specialization);";
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+                {
+                    MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
+                    insertCommand.Parameters.AddWithValue("@DId", doc.Id);
+                    insertCommand.Parameters.AddWithValue("@Specialization", doc.Specialization);
+                    connection.Open();
+                    doc.DId = Convert.ToInt32(insertCommand.ExecuteScalar());
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "Successfull";
+        }
+
     }
 }

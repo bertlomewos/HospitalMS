@@ -20,16 +20,19 @@ namespace HospitalMS.Control
             if(user == null)
             {
                 return "User can not be null";
-               
 
             }
 
             if(user.FName.Length > 20 && user.LName.Length > 20)
             {
                 return "User can not be null";
+                
             }
-           
-
+            if(user is Doc UsDoc)
+            {
+                
+            }
+            
             if (string.IsNullOrEmpty(user.FName) || string.IsNullOrEmpty(user.LName) || string.IsNullOrEmpty(user.Password) ||
                 string.IsNullOrEmpty(user.Role) || string.IsNullOrEmpty(user.FIN))
             {  
@@ -39,6 +42,7 @@ namespace HospitalMS.Control
              return "User " + result + " has been registered";
 
         }
+
         public void ValiditateUser(string UID, string Pass)
         {
             try

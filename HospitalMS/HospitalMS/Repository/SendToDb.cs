@@ -10,7 +10,6 @@ namespace HospitalMS.Repository
 {
     internal class SendToDb
     {
-
         public string InsertUser(User user)
         {
             string insertQuery = "INSERT INTO users " +
@@ -40,7 +39,5 @@ namespace HospitalMS.Repository
 
           return user.Id.ToString();
         }
-
-        
     }
 }

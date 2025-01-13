@@ -16,7 +16,6 @@ namespace HospitalMS.Control
         {
             if(user == null)
             {
-                
                 return "User can not be null";
                
             }

@@ -41,7 +41,6 @@ namespace HospitalMS
             string FIN = FINInput.Text;
             User newUser = new Admin(Fname, Lname, Pass, Role, Age, Gender, FIN);
             MessageBox.Show(userControl.checkForUserinfo(newUser));
-            
 
         }
 

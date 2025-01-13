@@ -33,5 +33,6 @@ namespace HospitalMS
             List<User> users = MainWindow.TheHolder;
             UserData.ItemsSource = users;
         }
+
     }
 }

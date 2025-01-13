@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HospitalMS.Model;
+using HospitalMS.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,6 +50,9 @@ namespace HospitalMS
             Window win = Window.GetWindow(this);
             win.Close();
 
+        }
+        public void LoadData(List<Object> Users)
+        {
         }
     }
 }

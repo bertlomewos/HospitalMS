@@ -22,7 +22,7 @@ namespace HospitalMS.Repository
 
                 while (reader.Read())
                 {
-                    users.Add(new User(
+                    users.Add(new Admin(
                             (int)reader["ID"],
                             reader["Fname"].ToString(),
                             reader["Lname"].ToString(),

@@ -26,20 +26,7 @@ namespace HospitalMS
         public RegisterPage()
         {
             InitializeComponent();
-            RoleInput.SelectionChanged += show_extra;
-        }
-
-        void show_extra(object sender, SelectionChangedEventArgs e)
-        {
-            string Role = (RoleInput.SelectedItem as ComboBoxItem)?.Content.ToString();
-            if (Role == "Doctor")
-            {
-                DocLabels.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                DocLabels.Visibility = Visibility.Collapsed;
-            }
+         
         }
 
         private void Reg_User(object sender, RoutedEventArgs e)
@@ -52,12 +39,12 @@ namespace HospitalMS
             int Age = 0;
             string Gender = rMale.IsChecked == true ? "Male" : rFemale.IsChecked == true ? "Female" : null;
             string FIN = FINInput.Text;
-            string specialization = Specialization.Text;
-            User newUser = new User(Fname, Lname, Pass, Role, Age, Gender, FIN);
+            User newUser = new Admin(Fname, Lname, Pass, Role, Age, Gender, FIN);
             MessageBox.Show(userControl.checkForUserinfo(newUser));
             
+
         }
 
-
+ 
     }
 }

@@ -56,7 +56,7 @@ namespace HospitalMS.Repository
                             docs.Add(new Doc(
                                 (int)reader["ID"],
                                 user.FName,
-                                user    .LName,
+                                user.LName,
                                 user.Password,
                                 user.Role,
                                 user.Age,
@@ -69,11 +69,73 @@ namespace HospitalMS.Repository
 
                         }
                     }
-                   
+
                 }
                 return docs;
             }
 
         }
+        public List<Nurse> GetNurse()
+        {
+            List<User> Users = GetUser();
+            List<Nurse> nurses = new List<Nurse>();
+            string GetQuery = "SELECT * FROM nurse";
+            using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+            {
+                MySqlCommand GetCommand = new MySqlCommand(GetQuery, connection);
+                connection.Open();
+                MySqlDataReader reader = GetCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    foreach (User user in Users)
+                    {
+                        if (user.Role == "Nurse")
+                        {
+                            nurses.Add(new Nurse(
+                                (int)reader["ID"],
+                                user.FName,
+                                user.LName,
+                                user.Password,
+                                user.Role,
+                                user.Age,
+                                user.Sex,
+                                user.FIN,
+                                (int)reader["NId"],
+                                (Nurse.NurseRole)Enum.Parse(typeof(Nurse.NurseRole), reader["NRole"].ToString()),
+                                reader["AssignedDoctorID"].ToString()
+                             ));
+                        }
+                    }
+                }
+                return nurses;
+            }
+        }
+        public List<Patient> GetPatient()
+        {
+            List<Patient> patients = new List<Patient>();
+            string GetQuery = "SELECT * FROM patient";
+            using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+            {
+                MySqlCommand GetCommand = new MySqlCommand(GetQuery, connection);
+                connection.Open();
+                MySqlDataReader reader = GetCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    patients.Add(new Patient(
+                        (int)reader["PID"],                       
+                        reader["Name"].ToString(),               
+                        reader["FatherName"].ToString(),               
+                        reader["Age"] != DBNull.Value ? (int)reader["Age"] : 0, 
+                        reader["Sex"].ToString(),                
+                        reader["Disease"].ToString(),            
+                        reader["FIN"].ToString(),               
+                        (int)reader["DoctorID"]      
+                    ));
+                }
+                return patients;
+            }
+        }
+
     }
 }

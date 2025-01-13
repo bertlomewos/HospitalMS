@@ -11,7 +11,6 @@
     <Grid>
         <Menu HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="#FF0075D4" Foreground="White" FontWeight="Bold">
             <MenuItem Header="Dashboard" Click="DashboardClicked"/>
-            <MenuItem Header="Register" Click="RegisterClicked"/>
             <MenuItem Header="Profile" Click="ProfileClicked"/>
             <MenuItem Header="Log Out" Click="LogOutClicked"/>
         </Menu>

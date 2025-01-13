@@ -16,33 +16,32 @@ using System.Windows.Shapes;
 namespace HospitalMS
 {
     /// <summary>
-    /// Interaction logic for DocPage.xaml
+    /// Interaction logic for NursePage.xaml
     /// </summary>
-    public partial class DocPage : Page
+    public partial class NursePage : Page
     {
-        public DocPage()
+        public NursePage()
         {
             InitializeComponent();
         }
 
         private void DashboardClicked(object sender, RoutedEventArgs e)
         {
-           DocFrame.Navigate(new DashBoard());
+            NurseFrame.Navigate(new DashBoard());
         }
 
         private void ProfileClicked(object sender, RoutedEventArgs e)
         {
-            DocFrame.Navigate(new Profile());
+            NurseFrame.Navigate(new Profile());
         }
 
         private void LogOutClicked(object sender, RoutedEventArgs e)
         {
-
             LoginWindow login = new LoginWindow();
             login.Show();
             Window win = Window.GetWindow(this);
             win.Close();
-
         }
+
     }
 }

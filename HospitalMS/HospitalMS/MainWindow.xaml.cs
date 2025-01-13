@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mysqlx.Connection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,10 +31,9 @@ namespace HospitalMS
             if(role == "Admin")
             {
                 this.Show();
-                LoginWindow login = new LoginWindow();
-                MainFrame.Navigate(new AdminPage());
-                login.Close();
+                MainFrame.Navigate(new AdminPage());  
             }
+          
         }
     }
 }

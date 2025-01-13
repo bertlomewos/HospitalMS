@@ -15,10 +15,11 @@ namespace HospitalMS.Model
         public string Role { get; set; }
         public int Age { get; set; }
         public string Sex { get; set; }
-        public string FIN { get; set; } 
+        public string FIN { get; set; }
 
+        /*[send to]*/
         public User(string Fname, string Lname, string password,  string role, 
-            int age, string sex, string Fin)
+            int age, string sex, string Fin)//to send to the Database
         {
             this.FName = Fname;
             this.LName = Lname;
@@ -28,8 +29,10 @@ namespace HospitalMS.Model
             this.Sex = sex;
             this.FIN = Fin;                                                                                                     
         }
+
+        /*[Get from]*/
         public User(int id,string Fname, string Lname, string password, string role,
-         int age, string sex, string Fin)
+         int age, string sex, string Fin) 
         {
             this.Id = id;
             this.FName = Fname;

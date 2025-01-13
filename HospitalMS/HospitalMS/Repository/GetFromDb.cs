@@ -22,23 +22,21 @@ namespace HospitalMS.Repository
 
                 while (reader.Read())
                 {
-                    users.Add
-                        (new User
-                        (
-                        (int)reader["ID"],
-                        reader["Fname"].ToString(),
-                        reader["Lname"].ToString(),
-                        reader["Password"].ToString(),
-                        reader["Role"].ToString(),
-                        (int)reader["Age"],
-                        reader["Sex"].ToString(),
-                        reader["FIN"].ToString()
-                        )
-                        );
+                    users.Add(new User(
+                            (int)reader["ID"],
+                            reader["Fname"].ToString(),
+                            reader["Lname"].ToString(),
+                            reader["Password"].ToString(),
+                            reader["Role"].ToString(),
+                            (int)reader["Age"],
+                            reader["Sex"].ToString(),
+                            reader["FIN"].ToString()
+                        ));
 
                 }
                 return users;
             }
         }
+
     }
 }

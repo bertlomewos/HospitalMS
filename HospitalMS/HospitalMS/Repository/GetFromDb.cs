@@ -31,14 +31,15 @@ namespace HospitalMS.Repository
                             (int)reader["Age"],
                             reader["Sex"].ToString(),
                             reader["FIN"].ToString()
-                        ));
+                     ));
 
                 }
                 return users;
             }
         }
-        /*public List<Doc> GetDoc()
+        public List<Doc> GetDoc()
         {
+            List<User> Users = GetUser();
             List<Doc> docs = new List<Doc>();
             string GetQuery = "SELECT * FROM doctors";
             using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
@@ -48,10 +49,31 @@ namespace HospitalMS.Repository
                 MySqlDataReader reader = GetCommand.ExecuteReader();
                 while (reader.Read())
                 {
-                    docs.Add(new Doc(
-                            ));
-                }
-        }*/
+                    foreach (User user in Users)
+                    {
+                        if (user.Role == "Doctor")
+                        {
+                            docs.Add(new Doc(
+                                (int)reader["ID"],
+                                user.FName,
+                                user    .LName,
+                                user.Password,
+                                user.Role,
+                                user.Age,
+                                user.Sex,
+                                user.FIN,
+                                (int)reader["DId"],
+                                reader["Specialization"].ToString()
 
+                            ));
+
+                        }
+                    }
+                   
+                }
+                return docs;
+            }
+
+        }
     }
 }

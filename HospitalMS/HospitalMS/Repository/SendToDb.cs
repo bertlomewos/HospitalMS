@@ -30,7 +30,6 @@ namespace HospitalMS.Repository
                     connection.Open();
                     user.Id = Convert.ToInt32(insertCommand.ExecuteScalar());
                 }
-
             }
             catch (Exception ex) 
             {

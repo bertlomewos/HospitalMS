@@ -17,7 +17,8 @@ namespace HospitalMS.Control
         GetFromDb get = new GetFromDb();
         public string checkForUserinfo(User user)
         {
-            if(user == null)
+            string result = "";
+            if (user == null)
             {
                 return "User can not be null";
 
@@ -30,7 +31,11 @@ namespace HospitalMS.Control
             }
             if(user is Doc UsDoc)
             {
-                
+                result = sd.InsertDoc(UsDoc);
+            }
+            if (user is Admin usrAdmin)
+            {
+                 result = sd.InsertUser(usrAdmin);
             }
             
             if (string.IsNullOrEmpty(user.FName) || string.IsNullOrEmpty(user.LName) || string.IsNullOrEmpty(user.Password) ||
@@ -38,8 +43,7 @@ namespace HospitalMS.Control
             {  
                 return "Please fill in all required fields.";
             }
-             string result = sd.InsertUser(user);
-             return "User " + result + " has been registered";
+          return "User " + result + " has been registered";
 
         }
 

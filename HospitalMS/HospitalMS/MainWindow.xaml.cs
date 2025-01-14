@@ -47,6 +47,13 @@ namespace HospitalMS
                 TheHolder = new List<User>();
                 TheHolder = getFromDb.GetUser();
             }
+            else if(role == "Finance")
+            {
+                this.Show();
+                MainFrame.Navigate(new FinancePage());
+                TheHolder = new List<User>();
+                TheHolder = getFromDb.GetUser();
+            }
 
         }
 

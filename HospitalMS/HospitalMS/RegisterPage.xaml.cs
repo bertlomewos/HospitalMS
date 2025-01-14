@@ -36,17 +36,14 @@ namespace HospitalMS
             if (Role == "Doctor")
             {
                 DocLabels.Visibility = Visibility.Visible;
-                NRole.Visibility = Visibility.Collapsed;
             }
             else if (Role == "Nurse")
             {
-                NRole.Visibility = Visibility.Visible;
                 DocLabels.Visibility = Visibility.Collapsed;
             }
             else
             {
                 DocLabels.Visibility = Visibility.Collapsed;
-                NRole.Visibility = Visibility.Collapsed;
             }
         }
         private void Reg_User(object sender, RoutedEventArgs e)
@@ -56,13 +53,13 @@ namespace HospitalMS
             string Lname = LastNameInput.Text;
             string Pass = PasswordInput.Password;
             string Role = (RoleInput.SelectedItem as ComboBoxItem)?.Content.ToString();
-            int Age = 0;
+            int Age = int.Parse(AgeInput.Text); ;
             string Gender = rMale.IsChecked == true ? "Male" : rFemale.IsChecked == true ? "Female" : null;
             string FIN = FINInput.Text;
             User newUser;
             if (Role == "Doctor")
             {
-                Age = int.Parse(AgeInput.Text);
+                
                 string specialization = (Specialization.SelectedItem as ComboBoxItem)?.Content.ToString();
                 newUser = new Doc(Fname, Lname, Pass, Role, Age, Gender, FIN, specialization);
                 MessageBox.Show(userControl.checkForUserinfo(newUser));
@@ -73,13 +70,8 @@ namespace HospitalMS
                 MessageBox.Show(userControl.checkForUserinfo(newUser));
             }
             else if (Role == "Nurse")
-            {
-                var selectedNRole = (NRoleInput.SelectedItem as ComboBoxItem)?.Content.ToString();
-               
-                // Initialize the variable
-                Nurse.NurseRole nurseRoleEnum = Nurse.NurseRole.General;
-                
-                newUser = new Nurse(Fname, Lname, Pass, Role, Age, Gender, FIN, nurseRoleEnum);
+            {                               
+                newUser = new Nurse(Fname, Lname, Pass, Role, Age, Gender, FIN);
                 MessageBox.Show(userControl.checkForUserinfo(newUser));
 
             }

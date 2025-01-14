@@ -101,8 +101,7 @@ namespace HospitalMS.Repository
                                 user.Sex,
                                 user.FIN,
                                 (int)reader["NId"],
-                                (Nurse.NurseRole)Enum.Parse(typeof(Nurse.NurseRole), reader["NRole"].ToString()),
-                                reader["AssignedDoctorID"].ToString()
+                                (int)reader["AssignedDoctorID"]
                              ));
                         }
                     }

@@ -37,6 +37,10 @@ namespace HospitalMS.Control
             {
                  result = sd.InsertUser(usrAdmin);
             }
+            if (user is Nurse usrNu)
+            {
+                result = sd.InsertNurse(usrNu);
+            }
             
             if (string.IsNullOrEmpty(user.FName) || string.IsNullOrEmpty(user.LName) || string.IsNullOrEmpty(user.Password) ||
                 string.IsNullOrEmpty(user.Role) || string.IsNullOrEmpty(user.FIN))

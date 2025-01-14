@@ -67,14 +67,13 @@ namespace HospitalMS.Repository
         {
             int UID = int.Parse(InsertUser(nurse));
             string insertQuery = "INSERT INTO nurse " +
-                "(NRole, ID) VALUES " +
-                "(@NRole, @Id);";
+                "(ID) VALUES " +
+                "(@Id);";
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
                 {
                     MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
-                    insertCommand.Parameters.AddWithValue("@NRole", nurse.NRole);
                     insertCommand.Parameters.AddWithValue("@Id", UID);
                     connection.Open();
                     insertCommand.ExecuteNonQuery();

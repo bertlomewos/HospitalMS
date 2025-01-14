@@ -60,7 +60,7 @@ namespace HospitalMS
             if (Role == "Doctor")
             {
                 
-                string specialization = (Specialization.SelectedItem as ComboBoxItem)?.Content.ToString();
+                string specialization = (SpecializationCombo.SelectedItem as ComboBoxItem)?.Content.ToString();
                 newUser = new Doc(Fname, Lname, Pass, Role, Age, Gender, FIN, specialization);
                 MessageBox.Show(userControl.checkForUserinfo(newUser));
             }

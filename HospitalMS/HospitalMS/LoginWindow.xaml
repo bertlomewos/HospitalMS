@@ -8,7 +8,7 @@
         Height="450"
         Width="800"
         WindowStartupLocation="CenterScreen"
-        Background="#FFFAFAFA">
+        Background="White">
     <Grid>
         <Grid VerticalAlignment="Center">
         <!-- Define Rows and Columns -->
@@ -34,7 +34,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Title -->
-        <Label Grid.Row="0" Grid.ColumnSpan="2"
+            <Label Grid.Row="0" Grid.ColumnSpan="2"
                Content="Welcome to HMS"
                HorizontalAlignment="Center"
                VerticalAlignment="Top"
@@ -42,40 +42,43 @@
                FontWeight="Bold"
                Foreground="#FF0075D4"
                Margin="0,20,0,30" />
+            <!-- User ID Label -->
+            <Image
+                Width="35" Height="35"
+                RenderTransformOrigin="3.325,1.67" 
+                Grid.Row="2" Grid.Column="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"  
+                Margin="0,0,10,10" Source="/boy_1144856.png" />
+            <!-- User ID box -->
 
-        <!-- User ID Label -->
-        <Label Grid.Row="2" Grid.Column="0"
-               Content="User ID:"
-               HorizontalAlignment="Right"
-               VerticalAlignment="Center"
-               FontSize="16"
-               Margin="0,0,10,10" />
-
-        <!-- User ID TextBox -->
-        <TextBox x:Name="UserID"
+            <TextBox x:Name="UserID"
                  Grid.Row="2" Grid.Column="1"
                  HorizontalAlignment="Left"
                  VerticalAlignment="Center"
                  Width="250"
                  Height="30"
-                 Margin="0,0,0,10" />
+                 Margin="0,0,0,10"/>
 
-        <!-- Password Label -->
-        <Label Grid.Row="3" Grid.Column="0"
-               Content="Password:"
-               HorizontalAlignment="Right"
-               VerticalAlignment="Center"
-               FontSize="16"
-               Margin="0,0,10,10" />
+
+            <!-- Password image -->
+            <Image
+                   Width="35" Height="35" 
+                   Grid.Row="3" Grid.Column="0"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   Margin="0,0,10,10" Source="/padlock_803954.png" />
 
         <!-- PasswordBox -->
-        <PasswordBox x:Name="PasswordBox"
+            <PasswordBox x:Name="PasswordBox"
                      Grid.Row="3" Grid.Column="1"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Center"
                      Width="250"
                      Height="30"
-                     Margin="0,0,0,10" />
+                     Margin="0,0,0,10"
+                    
+                />
 
         <!-- Login Button -->
         <Button Grid.Row="4" Grid.ColumnSpan="2"

@@ -14,6 +14,8 @@ namespace HospitalMS.Model
         public int DId { get; set; }
         public string Specialization { get; set; }
 
+       
+
         public Doc(string Fname, string Lname, string password, string role,
             int age, string sex, string Fin, string Specialization) : base(Fname, Lname, password, role,
          age, sex, Fin) //to send to the Database
@@ -22,7 +24,7 @@ namespace HospitalMS.Model
         }
         public Doc(int Id, string Fname, string Lname, string password, string role,
             int age, string sex, string Fin, int Did, string Specialization) : base(Id, Fname, Lname, password, role,
-         age, sex, Fin) //to send to the Database
+         age, sex, Fin) //to get from the Database
         {
             this.Specialization = Specialization;
             this.DId = Did;

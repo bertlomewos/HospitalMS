@@ -1,4 +1,6 @@
-﻿using Mysqlx.Connection;
+﻿using HospitalMS.Model;
+using HospitalMS.Repository;
+using Mysqlx.Connection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,9 @@ namespace HospitalMS
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        GetFromDb getFromDb = new GetFromDb();
+        internal static List<User> TheHolder;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,9 +36,19 @@ namespace HospitalMS
             if(role == "Admin")
             {
                 this.Show();
-                MainFrame.Navigate(new AdminPage());  
+                MainFrame.Navigate(new AdminPage());
+                TheHolder = new List<User>();
+                TheHolder = getFromDb.GetUser();
             }
-          
+            else if (role == "Doctor")
+            {
+                this.Show();
+                MainFrame.Navigate(new DocPage());
+                TheHolder = new List<User>();
+                TheHolder = getFromDb.GetUser();
+            }
+
         }
+
     }
 }

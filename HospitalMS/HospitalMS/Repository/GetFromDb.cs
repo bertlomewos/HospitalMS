@@ -22,7 +22,7 @@ namespace HospitalMS.Repository
 
                 while (reader.Read())
                 {
-                    users.Add(new User(
+                    users.Add(new Admin(
                             (int)reader["ID"],
                             reader["Fname"].ToString(),
                             reader["Lname"].ToString(),
@@ -31,12 +31,49 @@ namespace HospitalMS.Repository
                             (int)reader["Age"],
                             reader["Sex"].ToString(),
                             reader["FIN"].ToString()
-                        ));
+                     ));
 
                 }
                 return users;
             }
         }
+        public List<Doc> GetDoc()
+        {
+            List<User> Users = GetUser();
+            List<Doc> docs = new List<Doc>();
+            string GetQuery = "SELECT * FROM doctors";
+            using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+            {
+                MySqlCommand GetCommand = new MySqlCommand(GetQuery, connection);
+                connection.Open();
+                MySqlDataReader reader = GetCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    foreach (User user in Users)
+                    {
+                        if (user.Role == "Doctor")
+                        {
+                            docs.Add(new Doc(
+                                (int)reader["ID"],
+                                user.FName,
+                                user    .LName,
+                                user.Password,
+                                user.Role,
+                                user.Age,
+                                user.Sex,
+                                user.FIN,
+                                (int)reader["DId"],
+                                reader["Specialization"].ToString()
 
+                            ));
+
+                        }
+                    }
+                   
+                }
+                return docs;
+            }
+
+        }
     }
 }

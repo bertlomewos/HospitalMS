@@ -162,5 +162,15 @@ namespace HospitalMS
                 MessageBox.Show("Please select a patient.");
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

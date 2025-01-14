@@ -6,32 +6,13 @@
         xmlns:local="clr-namespace:HospitalMS"
         xmlns:ewp="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="DoctorPage" Height="1080" Width="1920" WindowState="Maximized" ResizeMode="CanResize" MinHeight="471.33" MinWidth="816">
-    <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="51.207" />
-            <RowDefinition Height="10.717"/>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+        Title="DoctorPage" Height="1080" Width="1920" WindowState="Maximized" ResizeMode="CanResize" MinHeight="471.33" MinWidth="816" >
+    <Grid>
+        <DataGrid  Margin="84,174,768,133"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="227,936,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="Doctor Dashboard" Margin="84,39,1686,996"/>
+        <Label Content="Assigned patient" Margin="84,112,1686,924"/>
+        <Label Content="Search" Margin="84,932,1686,104"/>
 
-       
-            <TextBlock Text="Doctor Dashboard" FontSize="24" FontWeight="Bold" Foreground="#FF0075D4" Margin="305,6,759,5" Grid.RowSpan="2" />
-     
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-
-            <TextBlock Text="Assigned patient" FontSize="18" FontWeight="Bold" Margin="0" Foreground="#FF003264" Grid.ColumnSpan="2" />
-            <DataGrid x:Name="patientsDataGrid" AutoGenerateColumns="True" Height="710" BorderBrush="#FF0075D4" Margin="-10,50,10,242" Grid.Row="2" />
-
-
-            <TextBlock Text="Actions" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" Width="170" Foreground="#FF00325B" />
-            <Button Content="View Details" Click="ViewDetails_Click" Margin="97,394,177,556" BorderBrush="{x:Null}" Foreground="White" Background="#FF0075D4" FontWeight="Bold" Grid.Column="1" />
-            <Button Content="Prescribe Medication" Click="PrescribeMedication_Click" Margin="97,305,193,641" BorderBrush="#00707070" Background="#FF0075D4" Foreground="White" FontWeight="Bold" Grid.Column="1" />
-            <Button Content="Request Lab Test" Click="RequestLabTest_Click" Margin="97,206,97,735" Foreground="White" Background="#FF0075D4" BorderBrush="#00707070" FontWeight="Bold" Grid.Column="1" />
-
-        
     </Grid>
 </Window>

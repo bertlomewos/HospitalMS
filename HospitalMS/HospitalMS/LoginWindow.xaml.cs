@@ -1,4 +1,6 @@
-﻿using Mysqlx.Connection;
+﻿using HospitalMS.Model;
+using HospitalMS.Control;
+using HospitalMS.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,24 +18,25 @@ using System.Windows.Shapes;
 namespace HospitalMS
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
-        public MainWindow()
+        
+        public LoginWindow()
         {
             InitializeComponent();
-           
         }
 
-        public void ChangeMainFrame(string role)
+        private void LoginBtn(object sender, RoutedEventArgs e)
         {
-            if(role == "Admin")
-            {
-                this.Show();
-                MainFrame.Navigate(new AdminPage());  
-            }
-          
+            string UID = UserID.Text;
+            string Pass = PasswordBox.Password;
+            UserManager user  = new UserManager();
+            user.ValiditateUser(UID, Pass);
+            this.Close();
         }
+
+       
     }
 }

@@ -1,5 +1,4 @@
-﻿using Mysqlx.Connection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,29 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HospitalMS
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for DocPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DocPage : Page
     {
-        public MainWindow()
+        public DocPage()
         {
             InitializeComponent();
-           
-        }
-
-        public void ChangeMainFrame(string role)
-        {
-            if(role == "Admin")
-            {
-                this.Show();
-                MainFrame.Navigate(new AdminPage());  
-            }
-          
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using HospitalMS.UI;
+﻿using HospitalMS.Model;
+using HospitalMS.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,33 +12,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HospitalMS
 {
     /// <summary>
-    /// Interaction logic for LoginPage.xaml
+    /// Interaction logic for DashBoard.xaml
     /// </summary>
-    public partial class LoginPage : Window
+    public partial class DashBoard : Page
     {
-        public LoginPage()
+        GetFromDb getFromDb = new GetFromDb();
+        public DashBoard()
         {
             InitializeComponent();
+            LoadData();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        public void LoadData()
         {
-
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            List<User> users = getFromDb.GetUser();
+            UserData.ItemsSource = users;
         }
     }
 }

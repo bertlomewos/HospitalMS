@@ -29,6 +29,8 @@
             <!-- FIN -->
             <RowDefinition Height="Auto" />
             <!-- Specialization -->
+            <RowDefinition Height="Auto" />
+            <!-- NRole -->
             <RowDefinition Height="*" />
             <!-- Submit Button -->
         </Grid.RowDefinitions>
@@ -102,7 +104,7 @@
             <ComboBoxItem Content="Admin" />
             <ComboBoxItem Content="Doctor" />
             <ComboBoxItem Content="Nurse" />
-            <ComboBoxItem Content="Finance" />
+            <ComboBoxItem Content="Patient" />
         </ComboBox>
 
         <!-- Age -->
@@ -149,24 +151,30 @@
                  Height="30"
                  Margin="0,10,0,10" />
 
-        <StackPanel Grid.Row="8" Grid.ColumnSpan="2" x:Name="DocLabels" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Collapsed">
+        <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Name="DocLabels" Orientation="Horizontal" Visibility="Collapsed">
             <Label
-       Content="Specialization"
-                Grid.Column="0"
-       HorizontalAlignment="Right"
-       VerticalAlignment="Center"
-       FontSize="14"
-       Margin="0,10,10,10" />
-            <TextBox 
-          x:Name="Specialization"
-                Grid.Column="1"
-          Width="250"
-          Height="30"
-          Margin="0,10,0,10" />
+           Content="Specialization"
+           Grid.Column="0"
+           HorizontalAlignment="Right"
+           VerticalAlignment="Center"
+           FontSize="14"
+           Margin="0,10,10,10" />
+            <ComboBox Grid.Column="1"
+              x:Name="SpecializationCombo"
+              Width="250"
+              Height="30"
+              Margin="0,10,0,10">
+                <ComboBoxItem Content="Neurology" />
+                <ComboBoxItem Content="Surgery" />
+                <ComboBoxItem Content="Pathology" />
+                <ComboBoxItem Content="gynaecology" />
+                <ComboBoxItem Content="gynaecology" />
+                <ComboBoxItem Content="gynaecology" />
+            </ComboBox>
         </StackPanel>
 
         <!-- Submit Button -->
-        <Button Grid.Row="9" Grid.ColumnSpan="2"
+        <Button Grid.Row="10" Grid.ColumnSpan="2"
                 Content="Submit"
                 HorizontalAlignment="Center"
                 Width="150"

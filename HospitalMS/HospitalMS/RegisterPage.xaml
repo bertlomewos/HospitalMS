@@ -102,7 +102,7 @@
             <ComboBoxItem Content="Admin" />
             <ComboBoxItem Content="Doctor" />
             <ComboBoxItem Content="Nurse" />
-            <ComboBoxItem Content="Patient" />
+            <ComboBoxItem Content="Finance" />
         </ComboBox>
 
         <!-- Age -->

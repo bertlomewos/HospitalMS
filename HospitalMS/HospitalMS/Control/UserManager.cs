@@ -37,6 +37,9 @@ namespace HospitalMS.Control
             {
                  result = sd.InsertUser(usrAdmin);
             }
+            if (user is finance finuser) { 
+                result=sd.Insertfin(finuser);
+            }
             
             if (string.IsNullOrEmpty(user.FName) || string.IsNullOrEmpty(user.LName) || string.IsNullOrEmpty(user.Password) ||
                 string.IsNullOrEmpty(user.Role) || string.IsNullOrEmpty(user.FIN))

@@ -14,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static HospitalMS.Model.Nurse;
 
 namespace HospitalMS
 {
@@ -37,10 +36,6 @@ namespace HospitalMS
             {
                 DocLabels.Visibility = Visibility.Visible;
             }
-            else if (Role == "Nurse")
-            {
-                DocLabels.Visibility = Visibility.Collapsed;
-            }
             else
             {
                 DocLabels.Visibility = Visibility.Collapsed;
@@ -55,28 +50,29 @@ namespace HospitalMS
             string Role = (RoleInput.SelectedItem as ComboBoxItem)?.Content.ToString();
             int Age = int.Parse(AgeInput.Text); ;
             string Gender = rMale.IsChecked == true ? "Male" : rFemale.IsChecked == true ? "Female" : null;
+            string specialization = Specialization.Text;
             string FIN = FINInput.Text;
             User newUser;
             if (Role == "Doctor")
             {
-                
-                string specialization = (Specialization.SelectedItem as ComboBoxItem)?.Content.ToString();
                 newUser = new Doc(Fname, Lname, Pass, Role, Age, Gender, FIN, specialization);
                 MessageBox.Show(userControl.checkForUserinfo(newUser));
             }
-            else if (Role == "Admin")
+            else if(Role == "Admin")
             {
                 newUser = new Admin(Fname, Lname, Pass, Role, Age, Gender, FIN);
                 MessageBox.Show(userControl.checkForUserinfo(newUser));
             }
-            else if (Role == "Nurse")
-            {                               
-                newUser = new Nurse(Fname, Lname, Pass, Role, Age, Gender, FIN);
+            else if( Role == "Finance"){
+                newUser = new finance(Fname, Lname, Pass, Role, Age, Gender, FIN);
                 MessageBox.Show(userControl.checkForUserinfo(newUser));
 
             }
 
+
+
         }
+
 
  
     }

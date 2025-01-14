@@ -1,6 +1,4 @@
-﻿using HospitalMS.Model;
-using HospitalMS.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,21 +16,13 @@ using System.Windows.Shapes;
 namespace HospitalMS
 {
     /// <summary>
-    /// Interaction logic for DashBoard.xaml
+    /// Interaction logic for FinancePage.xaml
     /// </summary>
-    public partial class DashBoard : Page
+    public partial class FinancePage : Page
     {
-        public DashBoard()
+        public FinancePage()
         {
             InitializeComponent();
-            LoadData();
         }
-
-        public void LoadData()
-        {
-            List<User> users = MainWindow.TheHolder;
-            UserData.ItemsSource = users;
-        }
-
     }
 }

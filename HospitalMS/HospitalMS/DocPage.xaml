@@ -14,10 +14,8 @@
 
         <!-- Main Content -->
         <Border Padding="15" Background="White" 
-                CornerRadius="10" 
-                Margin="0,0,0,10" 
-                BorderBrush="#FF0075D4" 
-                BorderThickness="1">
+                CornerRadius="10" Margin="0,0,0,10" 
+                BorderBrush="#FF0075D4" BorderThickness="1">
             <Grid Background="#FFF" Margin="10">
                 <!-- Define two columns -->
                 <Grid.ColumnDefinitions>
@@ -28,10 +26,18 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Menu in Column 0 -->
-                <Border Padding="15" Background="#FF0075D4" CornerRadius="10" Margin="0,0,0,10" 
-BorderBrush="#FF0075D4" BorderThickness="1">
-                    <Menu Grid.Column="0" Background="#FF0075D4" Foreground="White" 
-              FontWeight="Bold" Padding="10,20,10,20" Width="130">
+                <Border Padding="15" 
+                        Background="#FF0075D4" 
+                        CornerRadius="10" 
+                        Margin="0,0,0,10" 
+                        BorderBrush="#FF0075D4" 
+                        BorderThickness="1">
+                    <Menu Grid.Column="0" 
+                        Background="#FF0075D4" 
+                        Foreground="White" 
+                        FontWeight="Bold" 
+                        Padding="10,20,10,20" 
+                        Width="130">
                         <MenuItem Header="Dashboard" Click="DashboardClicked" Margin="0,5,0,5"/>
                         <MenuItem Header="Profile" Click="ProfileClicked" Margin="0,5,0,5"/>
                         <MenuItem Header="Log Out" Click="LogOutClicked" Margin="0,5,0,5"/>
@@ -39,9 +45,13 @@ BorderBrush="#FF0075D4" BorderThickness="1">
                 </Border>
                 <!-- Main content in Column 1 -->
                 <Grid Grid.Column="1" Margin="10,0,0,0">
-                    <Label Content="Doctor's Dashboard" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" 
-                   FontWeight="Bold" Foreground="#FF0075D4" Margin="0,10,0,0"/>
-                    <Frame x:Name="DocFrame" NavigationUIVisibility="Hidden" Margin="0,50,0,0"/>
+                    <Label Content="Doctor's Dashboard" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Top" FontSize="24" 
+                           FontWeight="Bold" 
+                           Foreground="#FF0075D4" 
+                           Margin="0,10,0,0"/>
+                    <Frame x:Name="DocFrame" NavigationUIVisibility="Hidden" Margin="0,50,0,0" />
                 </Grid>
             </Grid>
         </Border>

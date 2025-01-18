@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HospitalMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,14 @@ namespace HospitalMS
     /// </summary>
     public partial class DocPage : Page
     {
-        public DocPage()
+        public DocPage(String role)
         {
             InitializeComponent();
         }
 
         private void DashboardClicked(object sender, RoutedEventArgs e)
         {
-           DocFrame.Navigate(new DashBoard());
+           DocFrame.Navigate(new DashBoard("Doctor"));
         }
 
         private void ProfileClicked(object sender, RoutedEventArgs e)

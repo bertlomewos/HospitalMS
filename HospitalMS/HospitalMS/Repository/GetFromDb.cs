@@ -122,7 +122,7 @@ namespace HospitalMS.Repository
                 while (reader.Read())
                 {
                     patients.Add(new Patient(
-                        (int)reader["PID"],                       
+                        (int)reader["PatientID"],                       
                         reader["Name"].ToString(),               
                         reader["FatherName"].ToString(),               
                         reader["Age"] != DBNull.Value ? (int)reader["Age"] : 0, 

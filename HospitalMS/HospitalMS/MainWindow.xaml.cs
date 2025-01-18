@@ -27,25 +27,24 @@ namespace HospitalMS
         internal static List<User> TheHolder;
         public MainWindow()
         {
-            InitializeComponent();
-           
+            InitializeComponent(); 
         }
 
         public void ChangeMainFrame(string role)
         {
-            if(role == "Admin")
+            TheHolder = new List<User>();
+            if (role == "Admin")
             {
                 this.Show();
-                MainFrame.Navigate(new AdminPage());
-                TheHolder = new List<User>();
+                MainFrame.Navigate(new AdminPage(role));
                 TheHolder = getFromDb.GetUser();
             }
-            else if (role == "Doctor")
+            else if (role == "Doctor" || role == "Nurse")
             {
+                // Get only patients for Doctor/Nurse
                 this.Show();
-                MainFrame.Navigate(new DocPage());
-                TheHolder = new List<User>();
-                TheHolder = getFromDb.GetUser();
+                MainFrame.Navigate(role == "Doctor" ? new DocPage(role) : new NursePage(role));
+                TheHolder = getFromDb.GetUser().Where(u => u.Role == "Patient").ToList(); 
             }
 
         }

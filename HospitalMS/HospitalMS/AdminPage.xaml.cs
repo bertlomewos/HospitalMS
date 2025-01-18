@@ -22,10 +22,9 @@ namespace HospitalMS
     /// </summary>
     public partial class AdminPage : Page
     {
-        public AdminPage()
+        public AdminPage(String role)
         {
             InitializeComponent();
-
         }
 
         private void RegisterClicked(object sender, RoutedEventArgs e)
@@ -35,7 +34,7 @@ namespace HospitalMS
 
         private void DashboardClicked(object sender, RoutedEventArgs e)
         {
-            AdminFrame.Navigate(new DashBoard());
+            AdminFrame.Navigate(new DashBoard("Admin"));
         }
 
         private void ProfileClicked(object sender, RoutedEventArgs e)

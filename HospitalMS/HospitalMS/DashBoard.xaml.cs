@@ -22,16 +22,27 @@ namespace HospitalMS
     /// </summary>
     public partial class DashBoard : Page
     {
-        public DashBoard()
+        private GetFromDb _getFromDb;
+
+        public DashBoard(String role)
         {
             InitializeComponent();
-            LoadData();
+            _getFromDb = new GetFromDb();
+            LoadData(role);
         }
 
-        public void LoadData()
+        public void LoadData(string role)
         {
-            List<User> users = MainWindow.TheHolder;
-            UserData.ItemsSource = users;
+            if (role == "Admin")
+            {
+                List<User> users = _getFromDb.GetUser();
+                UserData.ItemsSource = users;
+            }
+            else if (role == "Doctor" || role == "Nurse")
+            {
+                List<Patient> patients = _getFromDb.GetPatient();
+                UserData.ItemsSource = patients;
+            }
         }
     }
 }

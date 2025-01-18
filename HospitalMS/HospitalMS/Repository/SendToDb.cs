@@ -85,11 +85,11 @@ namespace HospitalMS.Repository
             }
             return "Successfull";
         }
-        public string InsertPatient(Patient patient)
+        public string InsertPatient(Patient patient, int DoctorID)
         {
             string insertQuery = "INSERT INTO patient " +
-                "(Name, FatherName, Age, Sex, Disease, FIN) VALUES " +
-                "(@Name, @FatherName, @Age, @Sex, @Disease, @FIN);";
+                "(Name, FatherName, Age, Sex, Disease, FIN, DoctorID) VALUES " +
+                "(@Name, @FatherName, @Age, @Sex, @Disease, @FIN, @DoctorID);";
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
@@ -101,6 +101,7 @@ namespace HospitalMS.Repository
                     insertCommand.Parameters.AddWithValue("@Sex", patient.Sex);
                     insertCommand.Parameters.AddWithValue("@Disease", patient.Disease);
                     insertCommand.Parameters.AddWithValue("@FIN", patient.FIN);
+                    insertCommand.Parameters.AddWithValue("@DoctorID", DoctorID); 
                     connection.Open();
                     insertCommand.ExecuteNonQuery();
                 }

@@ -21,13 +21,11 @@ namespace HospitalMS.Control
             if (user == null)
             {
                 return "User can not be null";
-
             }
 
             if(user.FName.Length > 20 && user.LName.Length > 20)
             {
-                return "User can not be null";
-                
+                return "First Name and Last Name cannot exceed 20 characters.";
             }
             if(user is Doc UsDoc)
             {

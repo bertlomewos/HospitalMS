@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalMS.Model
 {
-    internal abstract class User
+    internal class User
     {
         public int Id { get; set; }
         public string FName { get; set; }
@@ -17,9 +17,19 @@ namespace HospitalMS.Model
         public string Sex { get; set; }
         public string FIN { get; set; }
 
+
+        /*[Update DB]*/
+        public User(string Fname, string Lname, string password, int age)
+        {
+            this.FName = Fname;
+            this.LName = Lname;
+            this.Password = password;
+            this.Age = age;
+        }
+
         /*[send to]*/
         public User(string Fname, string Lname, string password,  string role, 
-            int age, string sex, string Fin)//to send to the Database
+            int age, string sex, string Fin)
         {
             this.FName = Fname;
             this.LName = Lname;

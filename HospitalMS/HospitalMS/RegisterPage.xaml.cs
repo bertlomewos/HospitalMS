@@ -47,15 +47,15 @@ namespace HospitalMS
             string Fname = FirstNameInput.Text;
             string Lname = LastNameInput.Text;
             string Pass = PasswordInput.Password;
+
             string Role = (RoleInput.SelectedItem as ComboBoxItem)?.Content.ToString();
-            int Age = 0;
+            int Age = int.Parse(AgeInput.Text);
             string Gender = rMale.IsChecked == true ? "Male" : rFemale.IsChecked == true ? "Female" : null;
             string specialization = Specialization.Text;
             string FIN = FINInput.Text;
             User newUser;
             if (Role == "Doctor")
             {
-                Age = int.Parse(AgeInput.Text);
                 newUser = new Doc(Fname, Lname, Pass, Role, Age, Gender, FIN, specialization);
                 MessageBox.Show(userControl.checkForUserinfo(newUser));
             }

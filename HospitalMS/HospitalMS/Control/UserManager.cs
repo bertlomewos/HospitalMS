@@ -15,13 +15,13 @@ namespace HospitalMS.Control
     {
         SendToDb sd = new SendToDb();
         GetFromDb get = new GetFromDb();
+        Update update = new Update();
         public string checkForUserinfo(User user)
         {
             string result = "";
             if (user == null)
             {
                 return "User can not be null";
-
             }
 
             if(user.FName.Length > 20 && user.LName.Length > 20)
@@ -43,26 +43,48 @@ namespace HospitalMS.Control
             {  
                 return "Please fill in all required fields.";
             }
-          return "User " + result + " has been registered";
+          return  result;
 
         }
 
-        public void ValiditateUser(string UID, string Pass)
+        public string UpdateUser(User user)
+        {
+            string result = "";
+            if (user == null)
+            {
+                return "User can not be null";
+            }
+
+            if (user.FName.Length > 20 && user.LName.Length > 20)
+            {
+                return "User can not be null";
+
+            }
+
+            if (string.IsNullOrEmpty(user.FName) || string.IsNullOrEmpty(user.LName) || string.IsNullOrEmpty(user.Password) ||
+                string.IsNullOrEmpty(user.Role) || string.IsNullOrEmpty(user.FIN))
+            {
+                return "Please fill in all required fields.";
+            }
+
+            result = update.UpdateUser(user);
+            return result;
+           
+        }
+
+        public string ValiditateUser(string UID, string Pass)
         {
             try
             {
                 if (string.IsNullOrEmpty(Pass))
                 {
-                    MessageBox.Show("Please Enter Password");
-                    return;
+                    return "Password";
                 }
                 if (string.IsNullOrEmpty(UID))
                 {
-                    MessageBox.Show("Please Enter User ID");
-                    return;
+                    return "UserID";
                 }
                 List<User> users = get.GetUser();
-
                 foreach (User user in users)
                 {
                     if (user.Id.ToString() == UID && user.Password == Pass)
@@ -70,16 +92,18 @@ namespace HospitalMS.Control
                         MainWindow main = new MainWindow();
                         Profile.userID = user.Id;
                         main.ChangeMainFrame(user.Role);
-                        return;
+                        return "Successful";
                     }
+                  
                 }
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                return  ex.Message;
             }
-
-
+            
+            return "Failed";
 
         }
     }

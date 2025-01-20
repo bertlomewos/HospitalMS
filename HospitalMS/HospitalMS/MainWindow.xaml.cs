@@ -33,22 +33,27 @@ namespace HospitalMS
 
         public void ChangeMainFrame(string role)
         {
-            if(role == "Admin")
-            {
-                this.Show();
-                MainFrame.Navigate(new AdminPage());
-                TheHolder = new List<User>();
-                TheHolder = getFromDb.GetUser();
-            }
-            else if (role == "Doctor")
-            {
-                this.Show();
-                MainFrame.Navigate(new DocPage());
-                TheHolder = new List<User>();
-                TheHolder = getFromDb.GetUser();
-            }
-
+       
+                if (role == "Admin")
+                {
+                    this.Show();
+                    MainFrame.Navigate(new AdminPage());
+                    TheHolder = new List<User>();
+                    TheHolder = getFromDb.GetUser();
+                }
+                else if (role == "Doctor")
+                {
+                    this.Show();
+                    MainFrame.Navigate(new DocPage());
+                    TheHolder = new List<User>();
+                    TheHolder = getFromDb.GetUser();
+                }
         }
 
+        
+        private void ToDisplay()
+        {
+
+        }
     }
 }

@@ -21,14 +21,14 @@ namespace HospitalMS
     /// </summary>
     public partial class DocPage : Page
     {
-        public DocPage(String role)
+        public DocPage()
         {
             InitializeComponent();
         }
 
         private void DashboardClicked(object sender, RoutedEventArgs e)
         {
-           DocFrame.Navigate(new DashBoard("Doctor"));
+           DocFrame.Navigate(new DashBoard());
         }
 
         private void ProfileClicked(object sender, RoutedEventArgs e)

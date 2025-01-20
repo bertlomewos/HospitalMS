@@ -23,14 +23,14 @@ namespace HospitalMS
     /// </summary>
     public partial class NursePage : Page
     {
-        public NursePage(String role)
+        public NursePage()
         {
             InitializeComponent();
         }
 
         private void DashboardClicked(object sender, RoutedEventArgs e)
         {
-            NurseFrame.Navigate(new DashBoard("Nurse"));
+            NurseFrame.Navigate(new DashBoard());
             UpdatePateint.Visibility = Visibility.Visible;
         }
 

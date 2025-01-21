@@ -31,12 +31,12 @@ namespace HospitalMS.Repository
                     user.Id = Convert.ToInt32(insertCommand.ExecuteScalar());
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return ex.Message;
             }
 
-          return user.Id.ToString();
+            return user.Id.ToString();
         }
 
         public string InsertDoc(Doc doc)
@@ -61,6 +61,56 @@ namespace HospitalMS.Repository
                 return ex.Message;
             }
             return "Successfull";
+        }
+
+        public string InsertNurse(Nurse nurse)
+        {
+            int UID = int.Parse(InsertUser(nurse));
+            string insertQuery = "INSERT INTO nurse " +
+                "(ID) VALUES " +
+                "(@Id);";
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+                {
+                    MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
+                    insertCommand.Parameters.AddWithValue("@Id", UID);
+                    connection.Open();
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "Successfull";
+        }
+        public string InsertPatient(Patient patient, int DoctorID)
+        {
+            string insertQuery = "INSERT INTO patient " +
+                "(Name, FName, Age, Sex, Disease, FIN, DoctorID) VALUES " +
+                "(@Name, @FatherName, @Age, @Sex, @Disease, @FIN, @DoctorID);";
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+                {
+                    MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
+                    insertCommand.Parameters.AddWithValue("@Name", patient.Name);
+                    insertCommand.Parameters.AddWithValue("@FatherName", patient.FatherName);
+                    insertCommand.Parameters.AddWithValue("@Age", patient.Age);
+                    insertCommand.Parameters.AddWithValue("@Sex", patient.Sex);
+                    insertCommand.Parameters.AddWithValue("@Disease", patient.Disease);
+                    insertCommand.Parameters.AddWithValue("@FIN", patient.FIN);
+                    insertCommand.Parameters.AddWithValue("@DoctorID", DoctorID); 
+                    connection.Open();
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "Successful";
         }
 
     }

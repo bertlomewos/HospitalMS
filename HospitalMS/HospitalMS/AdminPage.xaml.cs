@@ -25,7 +25,6 @@ namespace HospitalMS
         public AdminPage()
         {
             InitializeComponent();
-
         }
 
         private void RegisterClicked(object sender, RoutedEventArgs e)

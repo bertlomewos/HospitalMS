@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HospitalMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,11 +29,6 @@ namespace HospitalMS
         private void DashboardClicked(object sender, RoutedEventArgs e)
         {
            DocFrame.Navigate(new DashBoard());
-        }
-
-        private void RegisterClicked(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void ProfileClicked(object sender, RoutedEventArgs e)

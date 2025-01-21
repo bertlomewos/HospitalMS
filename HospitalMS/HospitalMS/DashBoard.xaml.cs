@@ -22,6 +22,7 @@ namespace HospitalMS
     /// </summary>
     public partial class DashBoard : Page
     {
+
         public DashBoard()
         {
             InitializeComponent();
@@ -30,8 +31,11 @@ namespace HospitalMS
 
         public void LoadData()
         {
-            List<User> users = MainWindow.TheHolder;
+            List<Patient> users = MainWindow.PatientsHolder;
             UserData.ItemsSource = users;
+
+            List<Patient> patients = MainWindow.PatientsHolder;
+            UserData.ItemsSource = patients;
         }
 
     }

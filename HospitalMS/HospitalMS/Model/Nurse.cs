@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HospitalMS.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,11 @@ namespace HospitalMS.Model
             this.AssignedDoctorID = AssignedDoctorID;
             this.NId = NId;
         }
+
+        public static List<Patient> GetThePaitent()
+        {
+            return GetFromDb.GetPatient();
+        } 
 
     } 
 

@@ -36,16 +36,19 @@ namespace HospitalMS
             {
                 MainFrame.Navigate(new AdminPage());
                 TheHolder = new List<User>();
+                
             }
             else if (role == "Doctor")
             {
-                PatientsHolder = new List<Patient>();
                 MainFrame.Navigate(new DocPage());
+                PatientsHolder = new List<Patient>();
+                PatientsHolder = GetFromDb.GetPatient();
             }
             else if(role == "Nurse")
             {
-                PatientsHolder = new List<Patient>();
                 MainFrame.Navigate(new NursePage());
+                PatientsHolder = new List<Patient>();
+                PatientsHolder = GetFromDb.GetPatient();
             }
 
 

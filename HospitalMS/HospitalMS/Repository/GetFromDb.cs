@@ -109,7 +109,7 @@ namespace HospitalMS.Repository
                 return nurses;
             }
         }
-        public List<Patient> GetPatient()
+        public static List<Patient> GetPatient()
         {
             List<Patient> patients = new List<Patient>();
             string GetQuery = "SELECT * FROM patient";
@@ -124,7 +124,7 @@ namespace HospitalMS.Repository
                     patients.Add(new Patient(
                         (int)reader["PatientID"],                       
                         reader["Name"].ToString(),               
-                        reader["FatherName"].ToString(),               
+                        reader["FName"].ToString(),               
                         reader["Age"] != DBNull.Value ? (int)reader["Age"] : 0, 
                         reader["Sex"].ToString(),                
                         reader["Disease"].ToString(),            

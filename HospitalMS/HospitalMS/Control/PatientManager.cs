@@ -38,7 +38,7 @@ namespace HospitalMS.Control
         {
             try
             {
-                return get.GetPatient(); 
+                return GetFromDb.GetPatient(); 
             }
             catch (Exception ex)
             {

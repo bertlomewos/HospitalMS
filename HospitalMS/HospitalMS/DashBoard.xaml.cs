@@ -31,7 +31,7 @@ namespace HospitalMS
 
         public void LoadData()
         {
-            List<User> users = MainWindow.TheHolder;
+            List<Patient> users = MainWindow.PatientsHolder;
             UserData.ItemsSource = users;
         }
     }

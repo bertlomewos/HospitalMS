@@ -64,12 +64,6 @@ namespace HospitalMS
                 newUser = new Admin(Fname, Lname, Pass, Role, Age, Gender, FIN);
                 MessageBox.Show(userControl.checkForUserinfo(newUser));
             }
-         
-            
-
         }
-
-
- 
     }
 }

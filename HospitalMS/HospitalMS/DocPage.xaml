@@ -14,11 +14,13 @@
             <MenuItem Header="Profile" Click="ProfileClicked"/>
             <MenuItem Header="Log Out" Click="LogOutClicked"/>
         </Menu>
+        
         <Label Content="Doctor's Dashboard" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Foreground="#FF0075D4" Margin="0,30,0,0"/>
 
         <Grid Margin="0,30,0,0">
             <Frame x:Name="DocFrame" NavigationUIVisibility="Hidden"/>
         </Grid>
+        
 
     </Grid>
 </Page>

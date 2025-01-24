@@ -63,7 +63,7 @@ namespace HospitalMS.Control
                     MessageBox.Show("Please Enter User ID");
                     return;
                 }
-                List<User> users = get.GetUser();
+                List<User> users = GetFromDb.GetUser();
 
                 foreach (User user in users)
                 {

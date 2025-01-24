@@ -22,8 +22,7 @@ namespace HospitalMS
     /// </summary>
     public partial class MainWindow : Window
     {
-        internal static List<User> TheHolder;
-        internal static List<Patient> PatientsHolder;
+        internal static List<object> TheHolder;
 
         public MainWindow()
         {
@@ -35,20 +34,21 @@ namespace HospitalMS
             if (role == "Admin")
             {
                 MainFrame.Navigate(new AdminPage());
-                TheHolder = new List<User>();
-                
+                TheHolder = new List<object>();
+                TheHolder.AddRange(GetFromDb.GetUser());
+
             }
             else if (role == "Doctor")
             {
-                MainFrame.Navigate(new DocPage());
-                PatientsHolder = new List<Patient>();
-                PatientsHolder = GetFromDb.GetPatient();
+                MainFrame.Navigate(new DocPage()); 
+                TheHolder = new List<object>();
+                TheHolder.AddRange(GetFromDb.GetPatient());
             }
             else if(role == "Nurse")
             {
                 MainFrame.Navigate(new NursePage());
-                PatientsHolder = new List<Patient>();
-                PatientsHolder = GetFromDb.GetPatient();
+                TheHolder = new List<object>();
+                TheHolder.AddRange(GetFromDb.GetPatient());
             }
 
 

@@ -72,6 +72,7 @@ namespace HospitalMS.Control
                         MainWindow main = new MainWindow();
                         Profile.userID = user.Id;
                         main.ChangeMainFrame(user.Role);
+                        main.Show();
                         return;
                     }
                 }

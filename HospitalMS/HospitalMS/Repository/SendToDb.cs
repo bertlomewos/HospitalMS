@@ -88,7 +88,7 @@ namespace HospitalMS.Repository
         public string InsertPatient(Patient patient, int DoctorID)
         {
             string insertQuery = "INSERT INTO patient " +
-                "(Name, FatherName, Age, Sex, Disease, FIN, DoctorID) VALUES " +
+                "(Name, FName, Age, Sex, Disease, FIN, DoctorID) VALUES " +
                 "(@Name, @FatherName, @Age, @Sex, @Disease, @FIN, @DoctorID);";
             try
             {

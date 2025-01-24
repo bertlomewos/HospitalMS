@@ -30,7 +30,7 @@ namespace HospitalMS
         {
             InitializeComponent(); 
         }
-
+         
         public void ChangeMainFrame(string role)
         {
             if (role == "Admin")

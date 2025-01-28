@@ -3,8 +3,10 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace HospitalMS.Repository
 {
@@ -62,6 +64,30 @@ namespace HospitalMS.Repository
             }
             return "Successfull";
         }
+        public string Insertfin(finance finance)
+        {
+            int UID = int.Parse(InsertUser(finance));
+            string insertQuery = "INSERT INTO finance " +
+                "(Id) VALUES " +
+                "(@Id)";
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+                {
+                    MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
+                    insertCommand.Parameters.AddWithValue("@Id", UID);
+                    connection.Open();
+                    insertCommand.ExecuteNonQuery();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "Successfull";
+        }
+        
 
         public string InsertNurse(Nurse nurse)
         {

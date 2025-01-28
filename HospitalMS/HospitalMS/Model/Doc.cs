@@ -1,4 +1,5 @@
-﻿using Mysqlx.Crud;
+﻿using HospitalMS.Repository;
+using Mysqlx.Crud;
 using Org.BouncyCastle.Utilities.Encoders;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,10 @@ namespace HospitalMS.Model
         {
             this.Specialization = Specialization;
             this.DId = Did;
+        }
+        public static List<Patient> GetThePaitent()
+        {
+            return GetFromDb.GetPatient();
         }
 
 

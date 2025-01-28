@@ -1,4 +1,5 @@
-﻿using HospitalMS.Model;
+﻿using Azure;
+using HospitalMS.Model;
 using HospitalMS.Repository;
 using Mysqlx.Connection;
 using System;
@@ -24,36 +25,52 @@ namespace HospitalMS
     {
 
         GetFromDb getFromDb = new GetFromDb();
-        internal static List<User> TheHolder;
+        public static List<object> DataList = new List<object>();
         public MainWindow()
         {
             InitializeComponent();
-           
+            
         }
 
         public void ChangeMainFrame(string role)
         {
-       
-                if (role == "Admin")
-                {
-                    this.Show();
-                    MainFrame.Navigate(new AdminPage());
-                    TheHolder = new List<User>();
-                    TheHolder = getFromDb.GetUser();
-                }
-                else if (role == "Doctor")
-                {
-                    this.Show();
-                    MainFrame.Navigate(new DocPage());
-                    TheHolder = new List<User>();
-                    TheHolder = getFromDb.GetUser();
-                }
+            switch (role)
+            {
+                case "Admin":
+                    ToDisplay(new AdminPage(), GetFromDb.GetUser());
+                    break;
+                case "Doctor":
+                    ToDisplay(new DocPage(), Doc.GetThePaitent());
+                    break;
+                case "Nurse":
+                    ToDisplay(new NursePage(), Doc.GetThePaitent());
+                    break;
+                case "Finance":
+                    ToDisplay(new FinancePage(), finance.GetTheExpense());
+                    break;
+                case "Ops":
+                    //ToDisplay(new OpsPage(), Ops.GetRecords());
+                    break;
+                default:
+                    MessageBox.Show("Invalid role specified.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
+            }
         }
 
-        
-        private void ToDisplay()
-        {
 
+        public void ToDisplay<T>(Page page, List<T> dataList)
+        {
+            try
+            {
+                this.Show();
+                MainFrame.Navigate(page);
+                DataList.Clear();
+                DataList.AddRange(dataList.Cast<object>());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

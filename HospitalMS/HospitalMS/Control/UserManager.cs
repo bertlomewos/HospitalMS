@@ -87,7 +87,7 @@ namespace HospitalMS.Control
                 {
                     return "UserID";
                 }
-                List<User> users = get.GetUser();
+                List<User> users = GetFromDb.GetUser();
                 foreach (User user in users)
                 {
                     if (user.Id.ToString() == UID && user.Password == Pass)

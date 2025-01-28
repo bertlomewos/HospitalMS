@@ -10,7 +10,7 @@ namespace HospitalMS.Repository
 {
     class GetFromDb
     {
-        public List<User> GetUser()
+        public static List<User> GetUser()
         {
             List<User> users = new List<User>();
             string GetQuery = "SELECT * FROM users";
@@ -124,7 +124,7 @@ namespace HospitalMS.Repository
                     patients.Add(new Patient(
                         (int)reader["PatientID"],                       
                         reader["Name"].ToString(),               
-                        reader["FName"].ToString(),               
+                        reader["FatherName"].ToString(),               
                         reader["Age"] != DBNull.Value ? (int)reader["Age"] : 0, 
                         reader["Sex"].ToString(),                
                         reader["Disease"].ToString(),            

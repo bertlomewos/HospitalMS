@@ -33,7 +33,7 @@ namespace HospitalMS
         }
         public void LoadProfile()
         {
-            List<User> users = getFromDb.GetUser();
+            List<User> users = GetFromDb.GetUser();
             foreach (User user in users)
             {
                 if (user.Id == userID)

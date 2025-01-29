@@ -103,6 +103,7 @@
             <ComboBoxItem Content="Doctor" />
             <ComboBoxItem Content="Nurse" />
             <ComboBoxItem Content="Finance" />
+            <ComboBoxItem Content="OPS" />
         </ComboBox>
 
         <!-- Age -->

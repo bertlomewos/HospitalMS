@@ -9,23 +9,18 @@
       Title="DocPage">
 
     <DockPanel>
-        <!-- Menu positioned on the left -->
-    
-
-        <!-- Main Content -->
         <Border Padding="15" Background="White" 
                 CornerRadius="10" Margin="0,0,0,10" 
                 BorderBrush="#FF0075D4" BorderThickness="1">
             <Grid Background="#FFF" Margin="10">
-                <!-- Define two columns -->
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="130"/>
-                    <!-- Menu column -->
+
                     <ColumnDefinition Width="*"/>
-                    <!-- Frame and content column -->
+ 
                 </Grid.ColumnDefinitions>
 
-                <!-- Menu in Column 0 -->
                 <Border Padding="15" 
                         Background="#FF0075D4" 
                         CornerRadius="10" 

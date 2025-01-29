@@ -53,8 +53,8 @@ namespace HospitalMS
                 User.LName = LastNameInput.Text;
                 User.Password = PasswordInput.Text;
                 User.Age = int.Parse(AgeInput.Text);
-
                 MessageBox.Show(userControl.UpdateUser(User));
+                LoadProfile();
             }
 
         }

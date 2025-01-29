@@ -31,13 +31,14 @@ namespace HospitalMS
         private void DashboardClicked(object sender, RoutedEventArgs e)
         {
             NurseFrame.Navigate(new DashBoard());
-            UpdatePateint.Visibility = Visibility.Visible;
+            
+            UpdatePatient.Visibility = Visibility.Visible;
         }
 
         private void ProfileClicked(object sender, RoutedEventArgs e)
         {
             NurseFrame.Navigate(new Profile());
-            UpdatePateint.Visibility = Visibility.Collapsed;
+            UpdatePatient.Visibility = Visibility.Collapsed;
         }
 
         private void LogOutClicked(object sender, RoutedEventArgs e)

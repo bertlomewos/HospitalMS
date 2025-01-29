@@ -87,8 +87,6 @@
                     VerticalAlignment="Center"
                     Width="150"
                     Height="40"
-                    Background="#FF0075D4"
-                    Foreground="White"
                     FontWeight="Bold"
                     Margin="0,20,0,0"
                     Click="LoginBtn">

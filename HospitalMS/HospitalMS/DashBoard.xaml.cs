@@ -1,4 +1,5 @@
-﻿using HospitalMS.Model;
+﻿using HospitalMS.Control;
+using HospitalMS.Model;
 using HospitalMS.Repository;
 using System;
 using System.Collections.Generic;
@@ -24,9 +25,11 @@ namespace HospitalMS
     public partial class DashBoard : Page
     {
       public static int ID;
+        public static DashBoard instance;
         public DashBoard()
         {
             InitializeComponent();
+            instance = this;
             LoadData();
         }
 
@@ -34,7 +37,7 @@ namespace HospitalMS
         {
             List<object> Info = new List<object>();
             Info.Clear();
-            Info =  MainWindow.DataList;
+            Info =  UserManager.ChangeMainFrame(UserManager.role);
             UserData.ItemsSource = Info;
         }
 

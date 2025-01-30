@@ -41,7 +41,7 @@
                 </Border>
                 <Grid Grid.Column="1" Margin="10,0,0,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="800"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
@@ -52,7 +52,23 @@
                            Foreground="#FF0075D4" 
                            Margin="0,10,0,0"/>
                     <Frame x:Name="FinFrame" Grid.Column="0" NavigationUIVisibility="Hidden" Margin="0,50,0,0" />
-                   
+                    <StackPanel Name="Diagnos" Grid.Column="1" Margin="0,50,0,0" Visibility="Collapsed">
+                        <Label Content="Patient symtoms" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Top" FontSize="24" 
+                           FontWeight="Bold" 
+                           Foreground="#FF0075D4" 
+                           Margin="0,10,0,0"/>
+                        <Label x:Name="PID" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Top" FontSize="24" 
+                           FontWeight="Bold" 
+                           Foreground="#FF0075D4" 
+                           Margin="0,10,0,0"/>
+                        <TextBox x:Name="GainTextBox" Width="200" Height="30"/>
+                        <TextBox x:Name="LoseTextBox" Width="200" Height="30"/>
+                        <Button Content="Submit" Click="CalculateMoney" Width="100" Height="30" Margin="10,5,0,0" />
+                    </StackPanel>
                 </Grid>
             </Grid>
         </Border>

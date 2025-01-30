@@ -16,6 +16,8 @@ namespace HospitalMS.Control
         SendToDb sd = new SendToDb();
         GetFromDb get = new GetFromDb();
         UpdateTheDab update = new UpdateTheDab();
+        GetFromDb getFromDb = new GetFromDb();
+        public static string role;
         public string checkForUserinfo(User user)
         {
             string result = "";
@@ -95,7 +97,26 @@ namespace HospitalMS.Control
                     {
                         MainWindow main = new MainWindow();
                         Profile.userID = user.Id;
-                        main.ChangeMainFrame(user.Role);
+                        UserManager userManager = new UserManager();
+                        switch (user.Role)
+                        {
+                            case "Admin":
+                                userManager.ToDisplay<AdminPage>(new AdminPage());
+                                break;
+                            case "Doctor":
+                                userManager.ToDisplay<DocPage>(new DocPage());
+                                break;
+                            case "Nurse":
+                                userManager.ToDisplay<NursePage>(new NursePage());
+                                break;
+                            case "Finance":
+                                userManager.ToDisplay<FinancePage>(new FinancePage());
+                                break;
+                            default:
+                                MessageBox.Show("Invalid role specified.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                                break;
+                        }
+                        role = user.Role;
                         return "Successful";
                     }
                   
@@ -109,6 +130,48 @@ namespace HospitalMS.Control
             
             return "Failed";
 
+        }
+
+        public static List<object> ChangeMainFrame(string role)
+        {
+            List<object> DataList = new List<object>();
+            DataList.Clear();
+
+            switch (role)
+            {
+                case "Admin":
+                    DataList.AddRange(GetFromDb.GetUser());
+                    return DataList;
+                case "Doctor":
+                    DataList.AddRange(Doc.GetThePaitent());
+                    return DataList;
+                case "Nurse":
+                    DataList.AddRange(Doc.GetThePaitent());
+                    return DataList;
+                case "Finance":
+                    DataList.AddRange(finance.GetTheExpense());
+                    return DataList;
+                default:
+                    return null;
+                  
+            }
+
+        }
+
+
+        public  void ToDisplay<T>(Page page)
+        {
+            try
+            {
+                MainWindow mn = new MainWindow();
+                mn.Show();
+                mn.MainFrame.Navigate(page);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return;
         }
     }
 }

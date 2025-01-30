@@ -136,6 +136,26 @@ namespace HospitalMS.Repository
                 return patients;
             }
         }
+        public static List<Expenses> GetExpense()
+        {
+            List<Expenses> Expense = new List<Expenses>();
+            string GetQuery = "SELECT * FROM expense";
+            using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+            {
+                MySqlCommand GetCommand = new MySqlCommand(GetQuery, connection);
+                connection.Open();
+                MySqlDataReader reader = GetCommand.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    Expense.Add(new Expenses(
+                        (int)reader["dailyExpense"],
+                        (int)reader["DailyGain"],
+                        (int)reader["Profit"]
+                    ));
+                }
+                return Expense;
+            }
+        }
     }
 }

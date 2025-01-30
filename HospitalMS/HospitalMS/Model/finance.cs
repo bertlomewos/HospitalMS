@@ -23,10 +23,14 @@ namespace HospitalMS.Model
         {
             this.FinanceID = FinanceID;
         }
-
-        public static List<Patient> GetTheExpense()
+        public static string ExpenseRge(Expenses ex)
         {
-            return GetFromDb.GetPatient();
+            return SendToDb.Expense(ex);
+        }
+
+        public static List<Expenses> GetTheExpense()
+        {
+            return GetFromDb.GetExpense();
         }
     }
 

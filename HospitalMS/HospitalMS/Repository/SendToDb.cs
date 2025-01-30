@@ -144,5 +144,30 @@ namespace HospitalMS.Repository
             return "Successful";
         }
 
+        public static string Expense(Expenses exp)
+        {
+            string insertQuery = "INSERT INTO expense " +
+                "(dailyExpense, DailyGain, Profit) VALUES " +
+                "(@dailyExpense, @DailyGain, @Profit);";
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+                {
+                    MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
+                    insertCommand.Parameters.AddWithValue("@dailyExpense", exp.dailyExpense);
+                    insertCommand.Parameters.AddWithValue("@DailyGain", exp.DailyGain);
+                    insertCommand.Parameters.AddWithValue("@Profit", exp.Profit);
+
+                    connection.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+            return "successful";
+        }
+
     }
 }

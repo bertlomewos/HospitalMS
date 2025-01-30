@@ -40,7 +40,10 @@ namespace HospitalMS.Repository
         public static string diagnosePatient(Patient patient)
         {
 
-            string updateQuery = "UPDATE patient SET Symtoms=@Symtoms WHERE PatientID = @PID";
+            string updateQuery = "UPDATE patient SET" +
+                "Name = @Name, FName = @FName, Age = @Age,Sex = @Sex, Disease = @Disease, FIN= @FIN, DoctorID  = @DoctorID, " +
+                "Symtoms=@Symtoms " +
+                "WHERE PatientID = @PID";
 
             try
             {

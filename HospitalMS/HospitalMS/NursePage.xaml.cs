@@ -67,6 +67,7 @@ namespace HospitalMS
             if (result == "Successful")
             {
                 MessageBox.Show("Patient registered successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                DashBoard.instance.LoadData();
             }
             else
             {

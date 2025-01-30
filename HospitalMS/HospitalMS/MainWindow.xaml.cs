@@ -28,9 +28,6 @@ namespace HospitalMS
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new DashBoard());
         }
-
-   
     }
 }

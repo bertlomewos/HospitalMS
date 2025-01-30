@@ -15,7 +15,7 @@ namespace HospitalMS.Control
     {
         SendToDb sd = new SendToDb();
         GetFromDb get = new GetFromDb();
-        Update update = new Update();
+        UpdateTheDab update = new UpdateTheDab();
         public string checkForUserinfo(User user)
         {
             string result = "";

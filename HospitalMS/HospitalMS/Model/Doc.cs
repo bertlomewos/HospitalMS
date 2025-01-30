@@ -34,6 +34,10 @@ namespace HospitalMS.Model
         {
             return GetFromDb.GetPatient();
         }
+        public static string DiagnoseTheP(Patient p)
+        {
+            return UpdateTheDab.diagnosePatient(p);
+        }
 
 
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HospitalMS.Repository
 {
-    class Update
+    class UpdateTheDab
     {
         public string UpdateUser(User user)
         {
@@ -37,22 +37,27 @@ namespace HospitalMS.Repository
             return "Successful";
         }
 
-        public string diagnosePatient(Patient patient)
+        public static string diagnosePatient(Patient patient)
         {
 
-            string updateQuery = "Update patient set Disease = @Diagnos";
+            string updateQuery = "UPDATE patient SET Symtoms=@Symtoms WHERE PatientID = @PID";
 
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
                 {
                     MySqlCommand UpdateCommand = new MySqlCommand(updateQuery, connection);
-                    UpdateCommand.Parameters.AddWithValue("@Diagnos", patient.Disease);
+                    UpdateCommand.Parameters.AddWithValue("@PID", patient.PId);
+                    UpdateCommand.Parameters.AddWithValue("@Symtoms", patient.Symtoms);
                 }
             }
             catch (SqlException ex)
             {
                 return ex.Message;
+            }
+            catch(Exception e)
+            {
+                return e.Message;
             }
            return "Daignosed";
         }

@@ -16,6 +16,7 @@ namespace HospitalMS.Model
         public string Disease { get; set; }
         public string FIN { get; set; }
         public int DoctorID { get; set; }
+        public string Symtoms { get; set; }
 
         public Patient(string Name, string FatherName, int Age, 
             string Sex, string Disease, string FIN) //to send to the Database
@@ -29,7 +30,7 @@ namespace HospitalMS.Model
         }
 
         public Patient(int PId, string Name, string FatherName, int Age,
-            string Sex, string Disease, string FIN, int DoctorID) //to get from the Database
+            string Sex, string Disease, string FIN, int DoctorID, string symtoms) //to get from the Database
         {
             this.PId = PId;
             this.Name = Name;
@@ -39,6 +40,12 @@ namespace HospitalMS.Model
             this.Disease = Disease;
             this.FIN = FIN;
             this.DoctorID = DoctorID;
+            this.Symtoms = symtoms;
+        }
+        public Patient(int PId, string symtoms) //from tge doctor 
+        {
+            this.PId = PId;
+            this.Symtoms = symtoms;
         }
 
     }

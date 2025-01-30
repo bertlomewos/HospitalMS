@@ -122,14 +122,15 @@ namespace HospitalMS.Repository
                 while (reader.Read())
                 {
                     patients.Add(new Patient(
-                        (int)reader["PatientID"],                       
-                        reader["Name"].ToString(),               
-                        reader["FName"].ToString(),               
-                        reader["Age"] != DBNull.Value ? (int)reader["Age"] : 0, 
-                        reader["Sex"].ToString(),                
-                        reader["Disease"].ToString(),            
-                        reader["FIN"].ToString(),               
-                        (int)reader["DoctorID"]      
+                        (int)reader["PatientID"],
+                        reader["Name"].ToString(),
+                        reader["FName"].ToString(),
+                        reader["Age"] != DBNull.Value ? (int)reader["Age"] : 0,
+                        reader["Sex"].ToString(),
+                        reader["Disease"].ToString(),
+                        reader["FIN"].ToString(),
+                        (int)reader["DoctorID"],
+                        reader["Symtoms"].ToString()
                     ));
                 }
                 return patients;

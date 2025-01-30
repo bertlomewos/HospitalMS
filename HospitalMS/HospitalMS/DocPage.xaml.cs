@@ -40,20 +40,19 @@ namespace HospitalMS
 
         private void LogOutClicked(object sender, RoutedEventArgs e)
         {
+            Diagnos.Visibility = Visibility.Collapsed;
             LoginWindow login = new LoginWindow();
             login.Show();
             Window win = Window.GetWindow(this);
             win.Close();
         }
 
-        private void MenuItemClicked(object sender, RoutedEventArgs e)
-        {
-            Diagnos.Visibility = Visibility.Collapsed;
-        }
 
         private void SubmitDiagnosis(object sender, RoutedEventArgs e)
         {
-
+            Patient patient = new Patient(DashBoard.ID, DiagnosisTextBox.Text);
+            MessageBox.Show(Doc.DiagnoseTheP(patient));
+                
         }
     }
 }

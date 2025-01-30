@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalMS.Model
 {
-    internal class User
+    internal abstract class User
     {
         public int Id { get; set; }
         public string FName { get; set; }

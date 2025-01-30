@@ -22,7 +22,6 @@
                     <!-- Frame and content column -->
                 </Grid.ColumnDefinitions>
 
-                <!-- Menu in Column 0 -->
                 <Border Padding="15" 
                         Background="#FF0075D4" 
                         CornerRadius="10" 
@@ -40,15 +39,20 @@
                         <MenuItem Header="Log Out" Click="LogOutClicked" Margin="0,5,0,5"/>
                     </Menu>
                 </Border>
-                <!-- Main content in Column 1 -->
                 <Grid Grid.Column="1" Margin="10,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
                     <Label Content="Finance Dashboard" 
                            HorizontalAlignment="Left" 
                            VerticalAlignment="Top" FontSize="24" 
                            FontWeight="Bold" 
                            Foreground="#FF0075D4" 
                            Margin="0,10,0,0"/>
-                    <Frame x:Name="FinFrame" NavigationUIVisibility="Hidden" Margin="0,50,0,0" />
+                    <Frame x:Name="FinFrame" Grid.Column="0" NavigationUIVisibility="Hidden" Margin="0,50,0,0" />
+                   
                 </Grid>
             </Grid>
         </Border>

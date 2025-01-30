@@ -1,4 +1,5 @@
 ﻿using HospitalMS.Model;
+using Microsoft.Data.SqlClient;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -28,12 +29,32 @@ namespace HospitalMS.Repository
                     UpdateCommand.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 return ex.Message;
             }
 
             return "Successful";
+        }
+
+        public string diagnosePatient(Patient patient)
+        {
+
+            string updateQuery = "Update patient set Disease = @Diagnos";
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+                {
+                    MySqlCommand UpdateCommand = new MySqlCommand(updateQuery, connection);
+                    UpdateCommand.Parameters.AddWithValue("@Diagnos", patient.Disease);
+                }
+            }
+            catch (SqlException ex)
+            {
+                return ex.Message;
+            }
+           return "Daignosed";
         }
     }
 }

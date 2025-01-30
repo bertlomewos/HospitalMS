@@ -28,21 +28,31 @@ namespace HospitalMS
 
         private void DashboardClicked(object sender, RoutedEventArgs e)
         {
-           DocFrame.Navigate(new DashBoard());
+            DocFrame.Navigate(new DashBoard());
+            Diagnos.Visibility = Visibility.Visible; 
         }
 
         private void ProfileClicked(object sender, RoutedEventArgs e)
         {
             DocFrame.Navigate(new Profile());
+            Diagnos.Visibility = Visibility.Collapsed; 
         }
 
         private void LogOutClicked(object sender, RoutedEventArgs e)
         {
-
             LoginWindow login = new LoginWindow();
             login.Show();
             Window win = Window.GetWindow(this);
             win.Close();
+        }
+
+        private void MenuItemClicked(object sender, RoutedEventArgs e)
+        {
+            Diagnos.Visibility = Visibility.Collapsed;
+        }
+
+        private void SubmitDiagnosis(object sender, RoutedEventArgs e)
+        {
 
         }
     }

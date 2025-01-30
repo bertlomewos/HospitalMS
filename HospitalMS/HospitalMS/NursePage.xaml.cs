@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HospitalMS.Model;
+using HospitalMS.Repository;
+using Org.BouncyCastle.Asn1.X509;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,11 +31,14 @@ namespace HospitalMS
         private void DashboardClicked(object sender, RoutedEventArgs e)
         {
             NurseFrame.Navigate(new DashBoard());
+            
+            UpdatePatient.Visibility = Visibility.Visible;
         }
 
         private void ProfileClicked(object sender, RoutedEventArgs e)
         {
             NurseFrame.Navigate(new Profile());
+            UpdatePatient.Visibility = Visibility.Collapsed;
         }
 
         private void LogOutClicked(object sender, RoutedEventArgs e)
@@ -43,5 +49,30 @@ namespace HospitalMS
             win.Close();
         }
 
+        private void Reg_User(object sender, RoutedEventArgs e)
+        {
+            string Name = NameInput.Text;
+            string FatherName = FatherNameInput.Text;
+            int Age = int.Parse(AgeInput.Text);
+            string Sex = rMale.IsChecked == true ? "Male" : rFemale.IsChecked == true ? "Female" : null;
+            string Disease = DiseaseInput.Text;
+            string FIN = FINInput.Text;
+
+            Patient newPatient = new Patient(Name, FatherName, Age, Sex, Disease, FIN);
+            int DoctorID = 1;
+
+            SendToDb db = new SendToDb();
+            string result = db.InsertPatient(newPatient, DoctorID);
+
+            if (result == "Successful")
+            {
+                MessageBox.Show("Patient registered successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                DashBoard.instance.LoadData();
+            }
+            else
+            {
+                MessageBox.Show($"Failed to register patient. Error: {result}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

@@ -8,18 +8,45 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminPage">
 
-    <Grid>
-        <!-- Menu Bar -->
-        <Menu HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="#FF0075D4" Foreground="White" FontWeight="Bold">
+    <DockPanel>
+        <!-- Main Content -->
+        <Border Padding="15" Background="White" 
+         CornerRadius="10" Margin="0,0,0,10" 
+         BorderBrush="#FF0075D4" BorderThickness="1">
+            <Grid Background="#FFF" Margin="10">
+                <!-- Define two columns -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <!-- Menu column -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Frame and content column -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Menu in Column 0 -->
+                <Border Padding="15" 
+                 Background="#FF0075D4" 
+                 CornerRadius="10" 
+                 Margin="0,0,0,10" 
+                 BorderBrush="#FF0075D4" 
+                 BorderThickness="1">
+                    <Menu Grid.Column="0" 
+                 Background="#FF0075D4" 
+                 Foreground="White" 
+                 FontWeight="Bold" 
+                 Padding="10,20,10,20" 
+                 Width="130">
             <MenuItem Header="Dashboard" Click="DashboardClicked"/>
             <MenuItem Header="Register" Click="RegisterClicked"/>
             <MenuItem Header="Profile" Click="ProfileClicked"/>
             <MenuItem Header="Log Out" Click="LogOutClicked"/>
         </Menu>
-
-        <!-- Content Area -->
-        <Grid Margin="0,30,0,0">
-            <Frame x:Name="AdminFrame" NavigationUIVisibility="Hidden"/>
-        </Grid>
+      </Border>
+       <Grid Grid.Column="1" Margin="10,0,0,0">
+        <Frame x:Name="AdminFrame" NavigationUIVisibility="Hidden"/>
+      </Grid>
     </Grid>
+    </Border>
+
+    </DockPanel>
+
 </Page>

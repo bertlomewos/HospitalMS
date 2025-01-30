@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:HospitalMS"
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
-         
+        <!-- Global Button Style -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF0075D4" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
     </Application.Resources>
 </Application>

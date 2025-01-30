@@ -30,11 +30,31 @@ namespace HospitalMS
 
         private void LoginBtn(object sender, RoutedEventArgs e)
         {
+            LoginStatus();
+        }
+        private void LoginStatus()
+        {
             string UID = UserID.Text;
             string Pass = PasswordBox.Password;
-            UserManager user  = new UserManager();
-            user.ValiditateUser(UID, Pass);
-            this.Close();
+            UserManager user = new UserManager();
+            string result = user.ValiditateUser(UID, Pass);
+            if (result == "Failed")
+            {
+                MessageBox.Show("Failed to enter please check your");
+
+            }
+            else if (result == "Password")
+            {
+                MessageBox.Show("Please enter password");
+            }
+            else if (result == "UserID")
+            {
+                MessageBox.Show("Please enter Use ID");
+            }
+            else if (result == "Successful")
+            {
+                this.Close();
+            }
         }
 
        

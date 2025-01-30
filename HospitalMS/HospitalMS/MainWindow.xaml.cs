@@ -1,4 +1,5 @@
-﻿using HospitalMS.Model;
+﻿using Azure;
+using HospitalMS.Model;
 using HospitalMS.Repository;
 using Mysqlx.Connection;
 using System;
@@ -23,39 +24,13 @@ namespace HospitalMS
     public partial class MainWindow : Window
     {
 
-        GetFromDb getFromDb = new GetFromDb();
-        internal static List<User> TheHolder;
+
         public MainWindow()
         {
             InitializeComponent();
-           
+            MainFrame.Navigate(new DashBoard());
         }
 
-        public void ChangeMainFrame(string role)
-        {
-            if(role == "Admin")
-            {
-                this.Show();
-                MainFrame.Navigate(new AdminPage());
-                TheHolder = new List<User>();
-                TheHolder = getFromDb.GetUser();
-            }
-            else if (role == "Doctor")
-            {
-                this.Show();
-                MainFrame.Navigate(new DocPage());
-                TheHolder = new List<User>();
-                TheHolder = getFromDb.GetUser();
-            }
-            else if(role == "Finance")
-            {
-                this.Show();
-                MainFrame.Navigate(new FinancePage());
-                TheHolder = new List<User>();
-                TheHolder = getFromDb.GetUser();
-            }
-
-        }
-
+   
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HospitalMS.Model;
+using Microsoft.Data.SqlClient;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -111,31 +112,61 @@ namespace HospitalMS.Repository
             }
             return "Successfull";
         }
-        public string InsertPatient(Patient patient)
+        public string InsertPatient(Patient patient, int DoctorID)
         {
             string insertQuery = "INSERT INTO patient " +
-                "(Name, FatherName, Age, Sex, Disease, FIN) VALUES " +
-                "(@Name, @FatherName, @Age, @Sex, @Disease, @FIN);";
+                "(Name, FName, Age, Sex, Disease, FIN, DoctorID) VALUES " +
+                "(@Name, @FName, @Age, @Sex, @Disease, @FIN, @DoctorID);";
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
                 {
                     MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
                     insertCommand.Parameters.AddWithValue("@Name", patient.Name);
-                    insertCommand.Parameters.AddWithValue("@FatherName", patient.FatherName);
+                    insertCommand.Parameters.AddWithValue("@FName", patient.FatherName);
                     insertCommand.Parameters.AddWithValue("@Age", patient.Age);
                     insertCommand.Parameters.AddWithValue("@Sex", patient.Sex);
                     insertCommand.Parameters.AddWithValue("@Disease", patient.Disease);
                     insertCommand.Parameters.AddWithValue("@FIN", patient.FIN);
+                    insertCommand.Parameters.AddWithValue("@DoctorID", DoctorID); 
                     connection.Open();
                     insertCommand.ExecuteNonQuery();
                 }
+            }
+            catch (SqlException e)
+            {
+                return e.Message;
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
             return "Successful";
+        }
+
+        public static string Expense(Expenses exp)
+        {
+            string insertQuery = "INSERT INTO expense " +
+                "(dailyExpense, DailyGain, Profit) VALUES " +
+                "(@dailyExpense, @DailyGain, @Profit);";
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+                {
+                    MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
+                    insertCommand.Parameters.AddWithValue("@dailyExpense", exp.dailyExpense);
+                    insertCommand.Parameters.AddWithValue("@DailyGain", exp.DailyGain);
+                    insertCommand.Parameters.AddWithValue("@Profit", exp.Profit);
+
+                    connection.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+            return "successful";
         }
 
     }

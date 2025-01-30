@@ -10,7 +10,7 @@ namespace HospitalMS.Repository
 {
     class GetFromDb
     {
-        public List<User> GetUser()
+        public static List<User> GetUser()
         {
             List<User> users = new List<User>();
             string GetQuery = "SELECT * FROM users";
@@ -109,10 +109,10 @@ namespace HospitalMS.Repository
                 return nurses;
             }
         }
-        public List<Patient> GetPatient()
+        public static List<Patient> GetPatient()
         {
             List<Patient> patients = new List<Patient>();
-            string GetQuery = "SELECT * FROM patient";
+            string GetQuery = "SELECT * FROM patient    ";
             using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
             {
                 MySqlCommand GetCommand = new MySqlCommand(GetQuery, connection);
@@ -122,19 +122,40 @@ namespace HospitalMS.Repository
                 while (reader.Read())
                 {
                     patients.Add(new Patient(
-                        (int)reader["PID"],                       
-                        reader["Name"].ToString(),               
-                        reader["FatherName"].ToString(),               
-                        reader["Age"] != DBNull.Value ? (int)reader["Age"] : 0, 
-                        reader["Sex"].ToString(),                
-                        reader["Disease"].ToString(),            
-                        reader["FIN"].ToString(),               
-                        (int)reader["DoctorID"]      
+                        (int)reader["PatientID"],
+                        reader["Name"].ToString(),
+                        reader["FName"].ToString(),
+                        reader["Age"] != DBNull.Value ? (int)reader["Age"] : 0,
+                        reader["Sex"].ToString(),
+                        reader["Disease"].ToString(),
+                        reader["FIN"].ToString(),
+                        (int)reader["DoctorID"],
+                        reader["Symtoms"].ToString()
                     ));
                 }
                 return patients;
             }
         }
+        public static List<Expenses> GetExpense()
+        {
+            List<Expenses> Expense = new List<Expenses>();
+            string GetQuery = "SELECT * FROM expense";
+            using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
+            {
+                MySqlCommand GetCommand = new MySqlCommand(GetQuery, connection);
+                connection.Open();
+                MySqlDataReader reader = GetCommand.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    Expense.Add(new Expenses(
+                        (int)reader["dailyExpense"],
+                        (int)reader["DailyGain"],
+                        (int)reader["Profit"]
+                    ));
+                }
+                return Expense;
+            }
+        }
     }
 }

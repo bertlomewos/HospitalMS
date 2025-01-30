@@ -1,4 +1,5 @@
-﻿using HospitalMS.Model;
+﻿using HospitalMS.Control;
+using HospitalMS.Model;
 using HospitalMS.Repository;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace HospitalMS
     public partial class Profile : Page
     {
         GetFromDb getFromDb = new GetFromDb();
+        UserManager userControl = new UserManager();
         public static int userID;
         public Profile()
         {
@@ -31,7 +33,7 @@ namespace HospitalMS
         }
         public void LoadProfile()
         {
-            List<User> users = getFromDb.GetUser();
+            List<User> users = GetFromDb.GetUser();
             foreach (User user in users)
             {
                 if (user.Id == userID)
@@ -45,8 +47,28 @@ namespace HospitalMS
 
         private void Update_btn(object sender, RoutedEventArgs e)
         {
+            if (UserprofData.SelectedItem is User User)
+            {
+                User.FName = FirstNameInput.Text;
+                User.LName = LastNameInput.Text;
+                User.Password = PasswordInput.Text;
+                User.Age = int.Parse(AgeInput.Text);
+                MessageBox.Show(userControl.UpdateUser(User));
+                LoadProfile();
+            }
 
+        }
 
+        private void OnGridChange(object sender, SelectionChangedEventArgs e)
+        {
+            if(UserprofData.SelectedItem is User Selected)
+            {
+                FirstNameInput.Text = Selected.FName;
+                LastNameInput.Text = Selected.LName;
+                PasswordInput.Text = Selected.Password;
+                AgeInput.Text = Selected.Age.ToString();
+   
+            }
         }
     }
 }

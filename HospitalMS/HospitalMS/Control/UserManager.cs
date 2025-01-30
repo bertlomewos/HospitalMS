@@ -15,13 +15,15 @@ namespace HospitalMS.Control
     {
         SendToDb sd = new SendToDb();
         GetFromDb get = new GetFromDb();
+        UpdateTheDab update = new UpdateTheDab();
+        GetFromDb getFromDb = new GetFromDb();
+        public static string role;
         public string checkForUserinfo(User user)
         {
             string result = "";
             if (user == null)
             {
                 return "User can not be null";
-
             }
 
             if(user.FName.Length > 20 && user.LName.Length > 20)
@@ -37,8 +39,9 @@ namespace HospitalMS.Control
             {
                  result = sd.InsertUser(usrAdmin);
             }
-            if (user is finance finuser) { 
-                result=sd.Insertfin(finuser);
+            if (user is finance finuser)
+            { 
+                result = sd.Insertfin(finuser);
             }
             
             if (string.IsNullOrEmpty(user.FName) || string.IsNullOrEmpty(user.LName) || string.IsNullOrEmpty(user.Password) ||
@@ -46,44 +49,129 @@ namespace HospitalMS.Control
             {  
                 return "Please fill in all required fields.";
             }
-          return "User " + result + " has been registered";
+          return  result;
 
         }
 
-        public void ValiditateUser(string UID, string Pass)
+        public string UpdateUser(User user)
+        {
+            string result = "";
+            if (user == null)
+            {
+                return "User can not be null";
+            }
+
+            if (user.FName.Length > 20 && user.LName.Length > 20)
+            {
+                return "User can not be null";
+
+            }
+
+            if (string.IsNullOrEmpty(user.FName) || string.IsNullOrEmpty(user.LName) || string.IsNullOrEmpty(user.Password) ||
+                string.IsNullOrEmpty(user.Role) || string.IsNullOrEmpty(user.FIN))
+            {
+                return "Please fill in all required fields.";
+            }
+
+            result = update.UpdateUser(user);
+            return result;
+           
+        }
+
+        public string ValiditateUser(string UID, string Pass)
         {
             try
             {
                 if (string.IsNullOrEmpty(Pass))
                 {
-                    MessageBox.Show("Please Enter Password");
-                    return;
+                    return "Password";
                 }
                 if (string.IsNullOrEmpty(UID))
                 {
-                    MessageBox.Show("Please Enter User ID");
-                    return;
+                    return "UserID";
                 }
-                List<User> users = get.GetUser();
-
+                List<User> users = GetFromDb.GetUser();
                 foreach (User user in users)
                 {
                     if (user.Id.ToString() == UID && user.Password == Pass)
                     {
                         MainWindow main = new MainWindow();
                         Profile.userID = user.Id;
-                        main.ChangeMainFrame(user.Role);
-                        return;
+                        UserManager userManager = new UserManager();
+                        switch (user.Role)
+                        {
+                            case "Admin":
+                                userManager.ToDisplay<AdminPage>(new AdminPage());
+                                break;
+                            case "Doctor":
+                                userManager.ToDisplay<DocPage>(new DocPage());
+                                break;
+                            case "Nurse":
+                                userManager.ToDisplay<NursePage>(new NursePage());
+                                break;
+                            case "Finance":
+                                userManager.ToDisplay<FinancePage>(new FinancePage());
+                                break;
+                            default:
+                                MessageBox.Show("Invalid role specified.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                                break;
+                        }
+                        role = user.Role;
+                        return "Successful";
                     }
+                  
                 }
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                return  ex.Message;
+            }
+            
+            return "Failed";
+
+        }
+
+        public static List<object> ChangeMainFrame(string role)
+        {
+            List<object> DataList = new List<object>();
+            DataList.Clear();
+
+            switch (role)
+            {
+                case "Admin":
+                    DataList.AddRange(GetFromDb.GetUser());
+                    return DataList;
+                case "Doctor":
+                    DataList.AddRange(Doc.GetThePaitent());
+                    return DataList;
+                case "Nurse":
+                    DataList.AddRange(Doc.GetThePaitent());
+                    return DataList;
+                case "Finance":
+                    DataList.AddRange(finance.GetTheExpense());
+                    return DataList;
+                default:
+                    return null;
+                  
             }
 
+        }
 
 
+        public  void ToDisplay<T>(Page page)
+        {
+            try
+            {
+                MainWindow mn = new MainWindow();
+                mn.Show();
+                mn.MainFrame.Navigate(page);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return;
         }
     }
 }

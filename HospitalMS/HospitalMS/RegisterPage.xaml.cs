@@ -14,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static HospitalMS.Model.Nurse;
 
 namespace HospitalMS
 {
@@ -37,10 +36,6 @@ namespace HospitalMS
             {
                 DocLabels.Visibility = Visibility.Visible;
             }
-            else if (Role == "Nurse")
-            {
-                DocLabels.Visibility = Visibility.Collapsed;
-            }
             else
             {
                 DocLabels.Visibility = Visibility.Collapsed;
@@ -48,36 +43,49 @@ namespace HospitalMS
         }
         private void Reg_User(object sender, RoutedEventArgs e)
         {
-
-            string Fname = FirstNameInput.Text;
-            string Lname = LastNameInput.Text;
-            string Pass = PasswordInput.Password;
-            string Role = (RoleInput.SelectedItem as ComboBoxItem)?.Content.ToString();
-            int Age = int.Parse(AgeInput.Text); ;
-            string Gender = rMale.IsChecked == true ? "Male" : rFemale.IsChecked == true ? "Female" : null;
-            string FIN = FINInput.Text;
-            User newUser;
-            if (Role == "Doctor")
+            try
             {
-                
-                string specialization = (SpecializationCombo.SelectedItem as ComboBoxItem)?.Content.ToString();
-                newUser = new Doc(Fname, Lname, Pass, Role, Age, Gender, FIN, specialization);
-                MessageBox.Show(userControl.checkForUserinfo(newUser));
+                // Retrieve common input values
+                string fname = FirstNameInput.Text;
+                string lname = LastNameInput.Text;
+                string pass = PasswordInput.Password;
+                string role = (RoleInput.SelectedItem as ComboBoxItem)?.Content.ToString();
+                int age = int.Parse(AgeInput.Text);
+                string gender = rMale.IsChecked == true ? "Male" : rFemale.IsChecked == true ? "Female" : null;
+                string specialization = Specialization.Text;
+                string fin = FINInput.Text;
+
+                // Call the helper function to create and validate the user
+                User newUser = CreateUser(fname, lname, pass, role, age, gender, fin, specialization);
+                if (newUser != null)
+                {
+                    string resultMessage = userControl.checkForUserinfo(newUser);
+                    MessageBox.Show(resultMessage);
+                }
+                else
+                {
+                    MessageBox.Show("Invalid role selected.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else if (Role == "Admin")
+            catch (Exception ex)
             {
-                newUser = new Admin(Fname, Lname, Pass, Role, Age, Gender, FIN);
-                MessageBox.Show(userControl.checkForUserinfo(newUser));
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else if (Role == "Nurse")
-            {                               
-                newUser = new Nurse(Fname, Lname, Pass, Role, Age, Gender, FIN);
-                MessageBox.Show(userControl.checkForUserinfo(newUser));
-
-            }
-
         }
 
- 
+        private User CreateUser(string fname, string lname, string pass, string role, int age, string gender, string fin, string specialization)
+        {
+            // Factory-style logic for creating users based on role
+            return role switch
+            {
+                "Doctor" => new Doc(fname, lname, pass, role, age, gender, fin, specialization),
+                "Admin" => new Admin(fname, lname, pass, role, age, gender, fin),
+                "Nurse" => new Nurse(fname, lname, pass, role, age, gender, fin),
+                "Finance" => new finance(fname, lname, pass, role, age, gender, fin),
+                "OPS" => new Admin(fname, lname, pass, role, age, gender, fin),
+                _ => null // Return null for invalid roles
+            };
+        }
+
     }
 }

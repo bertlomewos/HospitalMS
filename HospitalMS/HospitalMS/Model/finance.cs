@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HospitalMS.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,15 @@ namespace HospitalMS.Model
          age, sex, Fin) //to get from the Database
         {
             this.FinanceID = FinanceID;
+        }
+        public static string ExpenseRge(Expenses ex)
+        {
+            return SendToDb.Expense(ex);
+        }
+
+        public static List<Expenses> GetTheExpense()
+        {
+            return GetFromDb.GetExpense();
         }
     }
 

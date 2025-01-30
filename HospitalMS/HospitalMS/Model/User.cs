@@ -17,9 +17,21 @@ namespace HospitalMS.Model
         public string Sex { get; set; }
         public string FIN { get; set; }
 
+        public static User instance;
+
+        /*[Update DB]*/
+        public User(string Fname, string Lname, string password, int age)
+        {
+            this.FName = Fname;
+            this.LName = Lname;
+            this.Password = password;
+            this.Age = age;
+            instance = this;
+        }
+
         /*[send to]*/
         public User(string Fname, string Lname, string password,  string role, 
-            int age, string sex, string Fin)//to send to the Database
+            int age, string sex, string Fin)
         {
             this.FName = Fname;
             this.LName = Lname;
@@ -27,7 +39,8 @@ namespace HospitalMS.Model
             this.Role = role;
             this.Age = age;
             this.Sex = sex;
-            this.FIN = Fin;                                                                                                     
+            this.FIN = Fin;
+            instance = this;
         }
 
         /*[Get from]*/
@@ -42,6 +55,7 @@ namespace HospitalMS.Model
             this.Age = age;
             this.Sex = sex;
             this.FIN = Fin;
+            instance = this;
         }
     }
 }

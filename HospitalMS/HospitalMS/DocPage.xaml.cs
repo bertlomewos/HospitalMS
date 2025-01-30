@@ -1,6 +1,4 @@
-﻿using HospitalMS.Model;
-using HospitalMS.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,41 +16,33 @@ using System.Windows.Shapes;
 namespace HospitalMS
 {
     /// <summary>
-    /// Interaction logic for AdminPage.xaml
+    /// Interaction logic for DocPage.xaml
     /// </summary>
-    public partial class AdminPage : Page
+    public partial class DocPage : Page
     {
-        public AdminPage()
+        public DocPage()
         {
             InitializeComponent();
-
-        }
-
-        private void RegisterClicked(object sender, RoutedEventArgs e)
-        {
-            AdminFrame.Navigate(new RegisterPage());
         }
 
         private void DashboardClicked(object sender, RoutedEventArgs e)
         {
-            AdminFrame.Navigate(new DashBoard());
+           DocFrame.Navigate(new DashBoard());
         }
 
         private void ProfileClicked(object sender, RoutedEventArgs e)
         {
-            AdminFrame.Navigate(new Profile());
+            DocFrame.Navigate(new Profile());
         }
 
         private void LogOutClicked(object sender, RoutedEventArgs e)
         {
+
             LoginWindow login = new LoginWindow();
             login.Show();
             Window win = Window.GetWindow(this);
             win.Close();
 
-        }
-        public void LoadData(List<Object> Users)
-        {
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HospitalMS.Model;
+using Microsoft.Data.SqlClient;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -114,15 +115,15 @@ namespace HospitalMS.Repository
         public string InsertPatient(Patient patient, int DoctorID)
         {
             string insertQuery = "INSERT INTO patient " +
-                "(Name, FatherName, Age, Sex, Disease, FIN, DoctorID) VALUES " +
-                "(@Name, @FatherName, @Age, @Sex, @Disease, @FIN, @DoctorID);";
+                "(Name, FName, Age, Sex, Disease, FIN, DoctorID) VALUES " +
+                "(@Name, @FName, @Age, @Sex, @Disease, @FIN, @DoctorID);";
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(DbConnection.connectionString))
                 {
                     MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
                     insertCommand.Parameters.AddWithValue("@Name", patient.Name);
-                    insertCommand.Parameters.AddWithValue("@FatherName", patient.FatherName);
+                    insertCommand.Parameters.AddWithValue("@FName", patient.FatherName);
                     insertCommand.Parameters.AddWithValue("@Age", patient.Age);
                     insertCommand.Parameters.AddWithValue("@Sex", patient.Sex);
                     insertCommand.Parameters.AddWithValue("@Disease", patient.Disease);
@@ -131,6 +132,10 @@ namespace HospitalMS.Repository
                     connection.Open();
                     insertCommand.ExecuteNonQuery();
                 }
+            }
+            catch (SqlException e)
+            {
+                return e.Message;
             }
             catch (Exception ex)
             {

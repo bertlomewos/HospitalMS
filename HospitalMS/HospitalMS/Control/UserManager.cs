@@ -146,7 +146,7 @@ namespace HospitalMS.Control
                     DataList.AddRange(Doc.GetThePaitent());
                     return DataList;
                 case "Nurse":
-                    DataList.AddRange(Doc.GetThePaitent());
+                    DataList.AddRange(Nurse.GetThePaitent());
                     return DataList;
                 case "Finance":
                     DataList.AddRange(finance.GetTheExpense());
